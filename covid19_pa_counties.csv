@@ -663,7 +663,7 @@
 "Lackawanna",2020-03-20,4,0
 "Lackawanna",2020-03-21,5,0
 "Lackawanna",2020-03-22,6,0
-"Lackawanna",2020-03-23,7,0
+"Lackawanna",2020-03-23,7,1
 "Lancaster",2020-03-05,0,0
 "Lancaster",2020-03-06,0,0
 "Lancaster",2020-03-07,0,0
@@ -853,7 +853,7 @@
 "Monroe",2020-03-20,19,0
 "Monroe",2020-03-21,25,0
 "Monroe",2020-03-22,31,0
-"Monroe",2020-03-23,43,0
+"Monroe",2020-03-23,43,1
 "Montgomery",2020-03-05,2,0
 "Montgomery",2020-03-06,4,0
 "Montgomery",2020-03-07,6,0
@@ -872,7 +872,7 @@
 "Montgomery",2020-03-20,59,0
 "Montgomery",2020-03-21,71,0
 "Montgomery",2020-03-22,87,0
-"Montgomery",2020-03-23,129,0
+"Montgomery",2020-03-23,129,1
 "Montour",2020-03-05,0,0
 "Montour",2020-03-06,0,0
 "Montour",2020-03-07,0,0
@@ -910,7 +910,7 @@
 "Northampton",2020-03-20,10,0
 "Northampton",2020-03-21,17,1
 "Northampton",2020-03-22,21,1
-"Northampton",2020-03-23,23,1
+"Northampton",2020-03-23,23,2
 "Northumberland",2020-03-05,0,0
 "Northumberland",2020-03-06,0,0
 "Northumberland",2020-03-07,0,0
