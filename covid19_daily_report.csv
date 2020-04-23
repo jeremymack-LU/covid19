@@ -34,6 +34,7 @@ Adams,4/19/20,80,1
 Adams,4/20/20,85,1
 Adams,4/21/20,91,2
 Adams,4/22/20,92,2
+Adams,4/23/20,95,1
 Allegheny,3/13/20,2,0
 Allegheny,3/14/20,3,0
 Allegheny,3/15/20,3,0
@@ -75,6 +76,7 @@ Allegheny,4/19/20,1035,50
 Allegheny,4/20/20,1042,55
 Allegheny,4/21/20,1059,67
 Allegheny,4/22/20,1088,74
+Allegheny,4/23/20,1149,69
 Armstrong,3/24/20,1,0
 Armstrong,3/25/20,1,0
 Armstrong,3/26/20,1,0
@@ -105,6 +107,7 @@ Armstrong,4/19/20,38,2
 Armstrong,4/20/20,38,2
 Armstrong,4/21/20,38,2
 Armstrong,4/22/20,39,2
+Armstrong,4/23/20,43,2
 Beaver,3/17/20,1,0
 Beaver,3/18/20,2,0
 Beaver,3/19/20,2,0
@@ -142,6 +145,7 @@ Beaver,4/19/20,288,32
 Beaver,4/20/20,298,36
 Beaver,4/21/20,303,43
 Beaver,4/22/20,317,47
+Beaver,4/23/20,319,46
 Bedford,3/31/20,2,0
 Bedford,4/1/20,3,0
 Bedford,4/2/20,3,0
@@ -165,6 +169,7 @@ Bedford,4/19/20,15,1
 Bedford,4/20/20,15,1
 Bedford,4/21/20,16,1
 Bedford,4/22/20,16,1
+Bedford,4/23/20,20,1
 Berks,3/18/20,1,0
 Berks,3/19/20,1,0
 Berks,3/20/20,5,0
@@ -201,6 +206,7 @@ Berks,4/19/20,1898,65
 Berks,4/20/20,1945,74
 Berks,4/21/20,1988,82
 Berks,4/22/20,2069,85
+Berks,4/23/20,2212,86
 Blair,3/26/20,1,0
 Blair,3/27/20,1,0
 Blair,3/28/20,2,0
@@ -229,6 +235,7 @@ Blair,4/19/20,13,0
 Blair,4/20/20,14,0
 Blair,4/21/20,14,0
 Blair,4/22/20,14,0
+Blair,4/23/20,15,0
 Bradford,3/24/20,1,0
 Bradford,3/25/20,1,0
 Bradford,3/26/20,2,0
@@ -259,6 +266,7 @@ Bradford,4/19/20,25,1
 Bradford,4/20/20,25,1
 Bradford,4/21/20,31,5
 Bradford,4/22/20,29,5
+Bradford,4/23/20,28,2
 Bucks,3/10/20,2,0
 Bucks,3/11/20,2,0
 Bucks,3/12/20,3,0
@@ -303,6 +311,7 @@ Bucks,4/19/20,1722,84
 Bucks,4/20/20,1812,90
 Bucks,4/21/20,1917,116
 Bucks,4/22/20,2004,126
+Bucks,4/23/20,2131,116
 Butler,3/22/20,1,0
 Butler,3/23/20,5,0
 Butler,3/24/20,6,0
@@ -335,6 +344,7 @@ Butler,4/19/20,161,5
 Butler,4/20/20,161,5
 Butler,4/21/20,162,6
 Butler,4/22/20,164,7
+Butler,4/23/20,164,6
 Cambria,3/23/20,1,0
 Cambria,3/24/20,1,0
 Cambria,3/25/20,1,0
@@ -366,6 +376,7 @@ Cambria,4/19/20,19,1
 Cambria,4/20/20,19,1
 Cambria,4/21/20,20,2
 Cambria,4/22/20,21,2
+Cambria,4/23/20,20,1
 Cameron,3/28/20,1,0
 Cameron,3/29/20,1,0
 Cameron,3/30/20,1,0
@@ -392,6 +403,7 @@ Cameron,4/19/20,1,0
 Cameron,4/20/20,1,0
 Cameron,4/21/20,1,0
 Cameron,4/22/20,1,0
+Cameron,4/23/20,1,0
 Carbon,3/24/20,1,0
 Carbon,3/25/20,1,0
 Carbon,3/26/20,2,0
@@ -422,6 +434,7 @@ Carbon,4/19/20,140,8
 Carbon,4/20/20,144,9
 Carbon,4/21/20,150,11
 Carbon,4/22/20,154,11
+Carbon,4/23/20,155,9
 Centre,3/20/20,1,0
 Centre,3/21/20,1,0
 Centre,3/22/20,1,0
@@ -456,6 +469,7 @@ Centre,4/19/20,73,1
 Centre,4/20/20,73,1
 Centre,4/21/20,77,2
 Centre,4/22/20,76,2
+Centre,4/23/20,76,1
 Chester,3/12/20,1,0
 Chester,3/13/20,2,0
 Chester,3/14/20,2,0
@@ -498,6 +512,7 @@ Chester,4/19/20,839,42
 Chester,4/20/20,883,44
 Chester,4/21/20,919,65
 Chester,4/22/20,950,67
+Chester,4/23/20,989,64
 Clarion,3/28/20,1,0
 Clarion,3/29/20,1,0
 Clarion,3/30/20,1,0
@@ -524,6 +539,7 @@ Clarion,4/19/20,18,1
 Clarion,4/20/20,18,1
 Clarion,4/21/20,18,1
 Clarion,4/22/20,19,1
+Clarion,4/23/20,20,1
 Clearfield,3/24/20,1,0
 Clearfield,3/25/20,2,0
 Clearfield,3/26/20,2,0
@@ -554,6 +570,7 @@ Clearfield,4/19/20,11,0
 Clearfield,4/20/20,11,0
 Clearfield,4/21/20,11,0
 Clearfield,4/22/20,11,0
+Clearfield,4/23/20,11,0
 Clinton,4/3/20,1,0
 Clinton,4/4/20,1,0
 Clinton,4/5/20,1,0
@@ -574,6 +591,7 @@ Clinton,4/19/20,11,0
 Clinton,4/20/20,11,0
 Clinton,4/21/20,11,0
 Clinton,4/22/20,13,0
+Clinton,4/23/20,14,0
 Columbia,3/22/20,1,0
 Columbia,3/23/20,1,0
 Columbia,3/24/20,1,0
@@ -606,6 +624,7 @@ Columbia,4/19/20,202,6
 Columbia,4/20/20,208,7
 Columbia,4/21/20,225,8
 Columbia,4/22/20,239,7
+Columbia,4/23/20,245,7
 Crawford,3/26/20,1,0
 Crawford,3/27/20,1,0
 Crawford,3/28/20,2,0
@@ -634,6 +653,7 @@ Crawford,4/19/20,16,0
 Crawford,4/20/20,16,0
 Crawford,4/21/20,17,0
 Crawford,4/22/20,17,0
+Crawford,4/23/20,19,0
 Cumberland,3/12/20,3,0
 Cumberland,3/13/20,3,0
 Cumberland,3/14/20,5,0
@@ -676,6 +696,7 @@ Cumberland,4/19/20,182,4
 Cumberland,4/20/20,186,4
 Cumberland,4/21/20,194,6
 Cumberland,4/22/20,207,6
+Cumberland,4/23/20,229,7
 Dauphin,3/22/20,1,0
 Dauphin,3/23/20,1,0
 Dauphin,3/24/20,4,0
@@ -708,6 +729,7 @@ Dauphin,4/19/20,368,9
 Dauphin,4/20/20,386,9
 Dauphin,4/21/20,400,11
 Dauphin,4/22/20,422,13
+Dauphin,4/23/20,445,16
 Delaware,3/8/20,1,0
 Delaware,3/9/20,1,0
 Delaware,3/10/20,1,0
@@ -754,6 +776,7 @@ Delaware,4/19/20,2405,90
 Delaware,4/20/20,2484,99
 Delaware,4/21/20,2654,118
 Delaware,4/22/20,2757,123
+Delaware,4/23/20,2902,119
 Elk,4/7/20,2,0
 Elk,4/8/20,2,0
 Elk,4/9/20,2,0
@@ -770,6 +793,7 @@ Elk,4/19/20,2,0
 Elk,4/20/20,2,0
 Elk,4/21/20,2,0
 Elk,4/22/20,2,0
+Elk,4/23/20,2,0
 Erie,3/20/20,1,0
 Erie,3/21/20,1,0
 Erie,3/22/20,2,0
@@ -804,6 +828,7 @@ Erie,4/19/20,58,0
 Erie,4/20/20,60,0
 Erie,4/21/20,60,0
 Erie,4/22/20,62,0
+Erie,4/23/20,68,0
 Fayette,3/22/20,1,0
 Fayette,3/23/20,1,0
 Fayette,3/24/20,2,0
@@ -836,6 +861,7 @@ Fayette,4/19/20,66,3
 Fayette,4/20/20,67,3
 Fayette,4/21/20,69,3
 Fayette,4/22/20,70,3
+Fayette,4/23/20,71,3
 Forest,4/2/20,1,0
 Forest,4/3/20,1,0
 Forest,4/4/20,2,0
@@ -857,6 +883,7 @@ Forest,4/19/20,7,0
 Forest,4/20/20,7,0
 Forest,4/21/20,7,0
 Forest,4/22/20,7,0
+Forest,4/23/20,7,0
 Franklin,3/20/20,1,0
 Franklin,3/21/20,1,0
 Franklin,3/22/20,1,0
@@ -891,6 +918,7 @@ Franklin,4/19/20,111,0
 Franklin,4/20/20,115,0
 Franklin,4/21/20,143,10
 Franklin,4/22/20,152,10
+Franklin,4/23/20,151,1
 Fulton,4/5/20,1,0
 Fulton,4/6/20,1,0
 Fulton,4/7/20,1,0
@@ -909,6 +937,7 @@ Fulton,4/19/20,2,0
 Fulton,4/20/20,2,0
 Fulton,4/21/20,2,0
 Fulton,4/22/20,2,0
+Fulton,4/23/20,2,0
 Greene,3/25/20,2,0
 Greene,3/26/20,3,0
 Greene,3/27/20,4,0
@@ -938,6 +967,7 @@ Greene,4/19/20,24,0
 Greene,4/20/20,25,0
 Greene,4/21/20,25,0
 Greene,4/22/20,25,0
+Greene,4/23/20,25,0
 Huntingdon,3/28/20,1,0
 Huntingdon,3/29/20,1,0
 Huntingdon,3/30/20,1,0
@@ -964,6 +994,7 @@ Huntingdon,4/19/20,13,0
 Huntingdon,4/20/20,13,0
 Huntingdon,4/21/20,13,0
 Huntingdon,4/22/20,15,0
+Huntingdon,4/23/20,20,0
 Indiana,3/26/20,1,0
 Indiana,3/27/20,2,0
 Indiana,3/28/20,2,0
@@ -992,6 +1023,7 @@ Indiana,4/19/20,51,4
 Indiana,4/20/20,53,4
 Indiana,4/21/20,55,4
 Indiana,4/22/20,56,4
+Indiana,4/23/20,59,4
 Jefferson,4/7/20,1,0
 Jefferson,4/8/20,1,0
 Jefferson,4/9/20,1,0
@@ -1008,6 +1040,7 @@ Jefferson,4/19/20,2,0
 Jefferson,4/20/20,3,0
 Jefferson,4/21/20,3,0
 Jefferson,4/22/20,3,0
+Jefferson,4/23/20,4,0
 Juniata,3/24/20,1,0
 Juniata,3/25/20,1,0
 Juniata,3/26/20,1,0
@@ -1038,6 +1071,7 @@ Juniata,4/19/20,70,0
 Juniata,4/20/20,72,0
 Juniata,4/21/20,72,0
 Juniata,4/22/20,73,0
+Juniata,4/23/20,77,0
 Lackawanna,3/18/20,1,0
 Lackawanna,3/19/20,2,0
 Lackawanna,3/20/20,4,0
@@ -1074,6 +1108,7 @@ Lackawanna,4/19/20,636,41
 Lackawanna,4/20/20,646,41
 Lackawanna,4/21/20,666,53
 Lackawanna,4/22/20,682,57
+Lackawanna,4/23/20,707,58
 Lancaster,3/19/20,2,0
 Lancaster,3/20/20,2,0
 Lancaster,3/21/20,4,0
@@ -1109,6 +1144,7 @@ Lancaster,4/19/20,1188,60
 Lancaster,4/20/20,1236,66
 Lancaster,4/21/20,1295,88
 Lancaster,4/22/20,1326,86
+Lancaster,4/23/20,1359,72
 Lawrence,3/25/20,1,0
 Lawrence,3/26/20,1,0
 Lawrence,3/27/20,4,0
@@ -1138,6 +1174,7 @@ Lawrence,4/19/20,59,5
 Lawrence,4/20/20,59,5
 Lawrence,4/21/20,60,6
 Lawrence,4/22/20,61,6
+Lawrence,4/23/20,61,5
 Lebanon,3/19/20,1,0
 Lebanon,3/20/20,1,0
 Lebanon,3/21/20,1,0
@@ -1173,6 +1210,7 @@ Lebanon,4/19/20,484,4
 Lebanon,4/20/20,502,5
 Lebanon,4/21/20,525,8
 Lebanon,4/22/20,535,8
+Lebanon,4/23/20,544,6
 Lehigh,3/14/20,1,0
 Lehigh,3/15/20,1,0
 Lehigh,3/16/20,1,0
@@ -1213,6 +1251,7 @@ Lehigh,4/19/20,2203,32
 Lehigh,4/20/20,2245,33
 Lehigh,4/21/20,2295,49
 Lehigh,4/22/20,2374,49
+Lehigh,4/23/20,2418,43
 Luzerne,3/14/20,1,0
 Luzerne,3/15/20,1,0
 Luzerne,3/16/20,1,0
@@ -1253,6 +1292,7 @@ Luzerne,4/19/20,1741,34
 Luzerne,4/20/20,1767,36
 Luzerne,4/21/20,1800,50
 Luzerne,4/22/20,1848,60
+Luzerne,4/23/20,1880,58
 Lycoming,3/26/20,1,0
 Lycoming,3/27/20,2,0
 Lycoming,3/28/20,2,0
@@ -1281,6 +1321,7 @@ Lycoming,4/19/20,37,0
 Lycoming,4/20/20,40,0
 Lycoming,4/21/20,42,2
 Lycoming,4/22/20,43,2
+Lycoming,4/23/20,44,0
 McKean,3/28/20,1,0
 McKean,3/29/20,1,0
 McKean,3/30/20,1,0
@@ -1307,6 +1348,7 @@ McKean,4/19/20,4,0
 McKean,4/20/20,4,0
 McKean,4/21/20,5,0
 McKean,4/22/20,5,0
+McKean,4/23/20,5,0
 Mercer,3/22/20,1,0
 Mercer,3/23/20,1,0
 Mercer,3/24/20,2,0
@@ -1339,6 +1381,7 @@ Mercer,4/19/20,59,1
 Mercer,4/20/20,59,1
 Mercer,4/21/20,59,1
 Mercer,4/22/20,59,1
+Mercer,4/23/20,60,1
 Mifflin,3/29/20,2,0
 Mifflin,3/30/20,1,0
 Mifflin,3/31/20,2,0
@@ -1364,6 +1407,7 @@ Mifflin,4/19/20,20,0
 Mifflin,4/20/20,20,0
 Mifflin,4/21/20,21,0
 Mifflin,4/22/20,22,0
+Mifflin,4/23/20,24,0
 Monroe,3/8/20,1,0
 Monroe,3/9/20,1,0
 Monroe,3/10/20,2,0
@@ -1409,6 +1453,7 @@ Monroe,4/19/20,963,38
 Monroe,4/20/20,970,39
 Monroe,4/21/20,995,46
 Monroe,4/22/20,1015,48
+Monroe,4/23/20,1024,42
 Montgomery,3/5/20,2,0
 Montgomery,3/6/20,4,0
 Montgomery,3/7/20,6,0
@@ -1458,6 +1503,7 @@ Montgomery,4/19/20,2913,164
 Montgomery,4/20/20,3040,184
 Montgomery,4/21/20,3154,223
 Montgomery,4/22/20,3294,230
+Montgomery,4/23/20,3395,204
 Montour,3/22/20,1,0
 Montour,3/23/20,1,0
 Montour,3/24/20,3,0
@@ -1490,6 +1536,7 @@ Montour,4/19/20,48,0
 Montour,4/20/20,48,0
 Montour,4/21/20,47,0
 Montour,4/22/20,47,0
+Montour,4/23/20,47,0
 Northampton,3/11/20,1,0
 Northampton,3/12/20,1,0
 Northampton,3/13/20,1,0
@@ -1533,6 +1580,7 @@ Northampton,4/19/20,1441,36
 Northampton,4/20/20,1469,36
 Northampton,4/21/20,1544,43
 Northampton,4/22/20,1591,44
+Northampton,4/23/20,1656,45
 Northumberland,3/27/20,1,0
 Northumberland,3/28/20,1,0
 Northumberland,3/29/20,1,0
@@ -1560,6 +1608,7 @@ Northumberland,4/19/20,67,0
 Northumberland,4/20/20,73,0
 Northumberland,4/21/20,77,0
 Northumberland,4/22/20,77,0
+Northumberland,4/23/20,82,0
 Perry,3/28/20,1,0
 Perry,3/29/20,1,0
 Perry,3/30/20,1,0
@@ -1586,6 +1635,7 @@ Perry,4/19/20,20,1
 Perry,4/20/20,20,1
 Perry,4/21/20,20,1
 Perry,4/22/20,23,1
+Perry,4/23/20,23,1
 Philadelphia,3/9/20,1,0
 Philadelphia,3/10/20,1,0
 Philadelphia,3/11/20,1,0
@@ -1631,6 +1681,7 @@ Philadelphia,4/19/20,8764,240
 Philadelphia,4/20/20,9038,262
 Philadelphia,4/21/20,9391,363
 Philadelphia,4/22/20,9696,365
+Philadelphia,4/23/20,10090,271
 Pike,3/11/20,1,0
 Pike,3/12/20,1,0
 Pike,3/13/20,1,0
@@ -1674,6 +1725,7 @@ Pike,4/19/20,301,8
 Pike,4/20/20,304,9
 Pike,4/21/20,314,12
 Pike,4/22/20,317,12
+Pike,4/23/20,327,12
 Potter,3/20/20,1,0
 Potter,3/21/20,1,0
 Potter,3/22/20,1,0
@@ -1708,6 +1760,7 @@ Potter,4/19/20,4,0
 Potter,4/20/20,4,0
 Potter,4/21/20,4,0
 Potter,4/22/20,4,0
+Potter,4/23/20,4,0
 Schuylkill,3/22/20,1,0
 Schuylkill,3/23/20,3,0
 Schuylkill,3/24/20,5,0
@@ -1740,6 +1793,7 @@ Schuylkill,4/19/20,261,5
 Schuylkill,4/20/20,267,5
 Schuylkill,4/21/20,277,7
 Schuylkill,4/22/20,283,7
+Schuylkill,4/23/20,290,5
 Snyder,3/28/20,1,0
 Snyder,3/29/20,2,0
 Snyder,3/30/20,2,0
@@ -1766,6 +1820,7 @@ Snyder,4/19/20,27,1
 Snyder,4/20/20,28,1
 Snyder,4/21/20,30,1
 Snyder,4/22/20,31,1
+Snyder,4/23/20,31,1
 Somerset,3/24/20,1,0
 Somerset,3/25/20,2,0
 Somerset,3/26/20,2,0
@@ -1796,6 +1851,7 @@ Somerset,4/19/20,18,0
 Somerset,4/20/20,19,0
 Somerset,4/21/20,19,0
 Somerset,4/22/20,19,0
+Somerset,4/23/20,20,0
 Sullivan,4/4/20,1,0
 Sullivan,4/5/20,1,0
 Sullivan,4/6/20,1,0
@@ -1815,6 +1871,7 @@ Sullivan,4/19/20,1,0
 Sullivan,4/20/20,1,0
 Sullivan,4/21/20,1,0
 Sullivan,4/22/20,1,0
+Sullivan,4/23/20,1,0
 Susquehanna,3/26/20,1,0
 Susquehanna,3/27/20,1,0
 Susquehanna,3/28/20,1,0
@@ -1843,6 +1900,7 @@ Susquehanna,4/19/20,63,3
 Susquehanna,4/20/20,66,4
 Susquehanna,4/21/20,71,4
 Susquehanna,4/22/20,71,4
+Susquehanna,4/23/20,72,4
 Tioga,3/28/20,1,0
 Tioga,3/29/20,1,0
 Tioga,3/30/20,1,0
@@ -1869,6 +1927,7 @@ Tioga,4/19/20,14,1
 Tioga,4/20/20,14,1
 Tioga,4/21/20,15,2
 Tioga,4/22/20,15,2
+Tioga,4/23/20,14,1
 Union,3/27/20,1,0
 Union,3/30/20,4,0
 Union,3/31/20,4,0
@@ -1894,6 +1953,7 @@ Union,4/19/20,27,0
 Union,4/20/20,28,0
 Union,4/21/20,29,0
 Union,4/22/20,30,0
+Union,4/23/20,30,0
 Venango,3/29/20,1,0
 Venango,3/30/20,1,0
 Venango,3/31/20,3,0
@@ -1919,6 +1979,7 @@ Venango,4/19/20,6,0
 Venango,4/20/20,6,0
 Venango,4/21/20,6,0
 Venango,4/22/20,6,0
+Venango,4/23/20,7,0
 Warren,3/25/20,1,0
 Warren,3/26/20,1,0
 Warren,3/27/20,1,0
@@ -1948,6 +2009,7 @@ Warren,4/19/20,1,0
 Warren,4/20/20,1,0
 Warren,4/21/20,2,1
 Warren,4/22/20,2,1
+Warren,4/23/20,1,0
 Washington,3/12/20,1,0
 Washington,3/13/20,1,0
 Washington,3/14/20,1,0
@@ -1990,6 +2052,7 @@ Washington,4/19/20,82,2
 Washington,4/20/20,83,2
 Washington,4/21/20,86,2
 Washington,4/22/20,87,2
+Washington,4/23/20,92,2
 Wayne,3/8/20,1,0
 Wayne,3/9/20,1,0
 Wayne,3/10/20,1,0
@@ -2036,6 +2099,7 @@ Wayne,4/19/20,84,3
 Wayne,4/20/20,85,3
 Wayne,4/21/20,86,3
 Wayne,4/22/20,86,3
+Wayne,4/23/20,87,3
 Westmoreland,3/19/20,2,0
 Westmoreland,3/20/20,4,0
 Westmoreland,3/21/20,4,0
@@ -2071,6 +2135,7 @@ Westmoreland,4/19/20,284,16
 Westmoreland,4/20/20,286,16
 Westmoreland,4/21/20,291,20
 Westmoreland,4/22/20,300,20
+Westmoreland,4/23/20,307,17
 Wyoming,4/2/20,1,0
 Wyoming,4/3/20,2,0
 Wyoming,4/4/20,5,0
@@ -2092,6 +2157,7 @@ Wyoming,4/19/20,17,1
 Wyoming,4/20/20,17,1
 Wyoming,4/21/20,17,1
 Wyoming,4/22/20,17,1
+Wyoming,4/23/20,17,1
 York,3/18/20,2,0
 York,3/19/20,2,0
 York,3/20/20,6,0
@@ -2128,3 +2194,4 @@ York,4/19/20,481,6
 York,4/20/20,493,6
 York,4/21/20,517,13
 York,4/22/20,531,14
+York,4/23/20,546,7
