@@ -3,11 +3,13 @@ library("tidyverse")
 library("zoo")
 library("pdftools")
 library("maps")
+library("readr")
 
 devtools::install_github("yonghah/esri2sf")
 library("esri2sf")
-
-url <- 'https://services2.arcgis.com/xtuWQvb2YQnp0z3F/arcgis/rest/services/Pennsylvania_Public_COVID19_Dashboard_Data/FeatureServer/0'
+###############################################
+# Pull data from hosted feature layer used in PA Department of Health Dashboard
+url <- 'https://services1.arcgis.com/Nifc7wlHaBPig3Q3/arcgis/rest/services/COVID_PA_Counties/FeatureServer/0'
 
 sf <- esri2sf(url)
 
@@ -23,6 +25,54 @@ df <- sf %>%
   arrange(County)
 
 df <- df[,c(4:6)]
+df <- df %>% filter(PA_counties_NAME != "Pennsylvania")
+###############################################
+# Pull data from pdfs posted by PA Department of Health - used if feature layer unvailable
+url1 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20County%20Data/County%20Case%20Counts_10-11-2020.pdf"
+
+pdf1 <- pdf_text(url1) %>%  # Select the linked PDF with case data
+  read_lines()              # Read lines into a list of vectors
+
+cases <- pdf1 %>%           # Select the list of vectors
+  str_squish() %>%          # Remove extra whitespace between elements
+  str_split(pattern=" ")    # Split vector string into pieces (i.e., columns)
+cases <- do.call(rbind,
+                 Filter(function(x) length(x)==6, cases))  # Combine list elements with 6 items
+#cases <- cases[-1,]                                        # Remove first row
+cases <- cases %>%
+  as.data.frame() %>%                             # Convert to a data frame
+  mutate(County=as.factor(V1),                    # Set County to factor
+         Cases=as.numeric(as.character(V3))) %>%  # Set Cases to numeric
+  mutate(County=str_to_sentence(County)) %>%      # Change County from all caps
+  select(7:8)
+head(cases, 5)
+
+url2 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20Death%20Data/Death%20by%20County%20of%20Residence%20--%202020-10-11.pdf"
+
+pdf2 <- pdf_text(url2) %>%  # Select the linked PDF with case data
+  read_lines()              # Read lines into a list of vectors
+
+deaths <- pdf2 %>%          # Select the list of vectors
+  str_squish() %>%          # Remove extra whitespace between elements
+  str_split(pattern=" ")    # Split vector string into pieces (i.e., columns)
+deaths <- do.call(rbind,
+                  Filter(function(x) length(x)==4, deaths)) # Combine list elements with 3 items
+deaths <- deaths %>%
+  as.data.frame() %>%                                       # Convert to a data frame
+  mutate(County=as.factor(V1),                              # Set County to factor
+         Deaths=as.numeric(gsub(",","",V2))) %>%            # Set Cases to numeric
+  select(5:6)
+head(deaths, 5)
+
+df <- merge(cases, deaths, by="County", all.x=TRUE)    # Merge by County
+df <- df %>%                                           # Set data structure for variables
+  mutate(County=as.factor(County),                     # Set County to factor
+         Cases=as.numeric(Cases),                      # Set Cases to numeric
+         Deaths=as.numeric(gsub(",","", Deaths))) %>%  # Set Deaths to numeric
+  mutate(Deaths=ifelse(is.na(Deaths),0, Deaths))       # Change NAs to 0
+head(df, 10)
+
+names(df) <- c("PA_counties_NAME", "Covid_cases", "Covid_deaths")
 
 ##################################################################################
 # Load and update dataset1
@@ -93,6 +143,8 @@ df5 <- df5 %>%
           New=NA) %>%
   mutate(New=Cases-lag(Cases, default=2))
 
+df5 <- df5 %>% arrange(Date)
+
 write.table(df5,
             "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid19_daily_total_pa.csv",
             sep=",",
@@ -140,12 +192,12 @@ lv <- df4 %>%
 
 lv <- lv %>%
   group_by(County) %>%
-  mutate(New14=rollapply(New,14,sum,fill=0,align="right"),
-         Incidence14=ifelse(County=="Lehigh",
-                            round(New14/(368100/100000),1),
+  mutate(New7=rollapply(New,7,mean,fill=0,align="right"),
+         Incidence7=ifelse(County=="Lehigh",
+                            round(New7/(368100/100000),1),
                             ifelse(County=="Northampton",
-                                   round(New14/(304807/100000),1),
-                                   round(New14/(64227/100000),1))))
+                                   round(New7/(304807/100000),1),
+                                   round(New7/(64227/100000),1))))
 
 write.table(lv,
             "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid19_lv_incidence.csv",
@@ -188,48 +240,26 @@ write.table(lv3,
 ##################################################################################
 
 pa <- df5 %>%
-  mutate(New14=zoo::rollapply(New,14,sum,fill=0,align="right"),
-         Incidence14=New14/(12807060/100000))
+  mutate(New7=zoo::rollapply(New,7,mean,fill=0,align="right"),
+         Incidence7=New7/(12807060/100000))
 
-lvi <- lv %>% select(County, Date, Incidence14) %>% as.data.frame()
+lvi <- lv %>% select(County, Date, Incidence7) %>% as.data.frame()
 
-pai <- pa %>% mutate(County="Pennsylvania") %>% select(County, Date, Incidence14)
+pai <- pa %>% mutate(County="Pennsylvania") %>% select(County, Date, Incidence7)
 
 Data <- lvi %>% add_row(County=pai$County,
                         Date=pai$Date,
-                        Incidence14=pai$Incidence14)
+                        Incidence7=pai$Incidence7)
 
 plot <- ggplot(data=Data, aes(x=Date,
-                              y=Incidence14,
+                              y=Incidence7,
                               color=County,
                               group=County,
                               fill=County,
                               size=County,
                               linetype=County)) +
-  geom_hline(yintercept=50, linetype=3) +
-  geom_vline(xintercept=as.Date("2020-04-14"), linetype=3, color="brown") +
   geom_line(position="identity") +
   geom_area(position="identity", alpha=0.1, show.legend=FALSE) +
-  annotate(geom="segment",
-           xend=as.Date("2020-04-14") + 0.25,
-           x=as.Date("2020-04-20"),
-           y=436,
-           yend=436,
-           size=0.25,
-           arrow = arrow(length = unit(0.01, "npc"))) +
-  annotate(geom="text", x=as.Date("2020-04-20") + 0.4, y=436, 
-           label="Two weeks, following Stay at Home Order", 
-           hjust=0, size=2) +
-  annotate(geom="segment",
-           x=as.Date("2020-03-05")+0.15,
-           xend=as.Date("2020-03-05")+0.15,
-           yend=52,
-           y=120,
-           size=0.25,
-           arrow = arrow(length = unit(0.01, "npc"))) +
-  annotate(geom="text", x=as.Date("2020-03-05"), y=150,
-           label="Benchmark goal\nof 50 new cases\nper 100,000 residents",
-           hjust=0, size=2) +
   scale_color_manual(values=c(Carbon="Brown",
                               Lehigh="Blue",
                               Northampton="Orange",
@@ -246,23 +276,29 @@ plot <- ggplot(data=Data, aes(x=Date,
                              "Lehigh County",
                              "Northampton County",
                              "Pennsylvania")) +
-  scale_size_manual(values=c(0.25,0.25,0.25,0.5),
+  scale_size_manual(values=c(0.15,0.15,0.15,0.5),
                     labels=c("Carbon County",
                              "Lehigh County",
                              "Northampton County",
                              "Pennsylvania")) +
-  scale_linetype_manual(values=c(1,1,1,2),
+  scale_linetype_manual(values=c(1,1,1,1),
                         labels=c("Carbon County",
                                  "Lehigh County",
                                  "Northampton County",
                                  "Pennsylvania")) +
-  labs(y="New cases per 100,000 residents in 14 days\n ",
+  labs(y="Avg. daily new cases per 100,000 residents\n ",
        caption="Data source: PA Department of Health") +
-  expand_limits(y=c(0,450)) +
+  expand_limits(y=c(0,40)) +
   scale_y_continuous(expand=c(0,0)) +
+  scale_x_date(expand=c(0.01,0)) +
+  ggtitle(label="How has COVID-19 incidence changed over time?",
+          subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
   theme(panel.background=element_blank(),
         panel.grid=element_blank(),
-        plot.title=element_text(size=9, color="black"),
+        plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
+                                margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+        plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
+                                   margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
         strip.background=element_rect(color="black", size=0.25),
         axis.line=element_line(size=0.25),
         axis.ticks=element_line(size=0.25),
@@ -272,7 +308,7 @@ plot <- ggplot(data=Data, aes(x=Date,
         plot.caption=element_text(size=6, color="black"),
         legend.justification="top",
         legend.title=element_blank(),
-        legend.position=c(0.11,1.04),
+        legend.position=c(0.90,1.04),
         legend.text=element_text(size=6, color="black"),
         legend.key=element_blank(),
         legend.key.width=unit(1.2,"line"),
@@ -280,6 +316,13 @@ plot <- ggplot(data=Data, aes(x=Date,
 
 jpeg(file="/Users/jeremymack/Documents/Lehigh/R/gogs/covid19/PA_LV_cases.jpeg",
      width=7,height=3.5,
+     units="in",
+     res=600)
+plot
+dev.off()
+
+jpeg(file="/Users/jeremymack/Google Drive/R/PA_LV_cases.jpeg",
+     width=7,height=4.0,
      units="in",
      res=600)
 plot

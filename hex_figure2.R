@@ -5,6 +5,7 @@ library(broom)
 library(rgeos)
 library(tidyverse)
 library(zoo)
+library(patchwork)
 
 pop <- read.table("population.csv", sep=",", header=TRUE)
 pop <- pop %>% mutate(population=as.numeric(gsub(",","",population)))
@@ -66,19 +67,20 @@ df.us2 <- df.us %>% filter(date==Sys.Date()-1)
 df.us2 <- merge(df.us2, pop, by="state")
 
 df.us2 <- df.us2 %>% mutate(pop100=population/100000,
-                            new7b=round(new7/pop100,0))
+                            new7b=round(new7/pop100,1))
 
 spdf_fortified2 <- spdf_fortified %>%
   left_join(. , df.us2, by=c("id"="state"))
 
 spdf_fortified2$bin <- cut(spdf_fortified2$new7b,
-                           breaks=c(0,1,9,24,100),
-                           labels=c("A",
+                           breaks=c(-20,0,0.9,9,24.9,100),
+                           labels=c("X",
+                                    "A",
                                     "B",
                                     "C",
                                     "D"))
 
-cols <- c("A"="#197d7d", "B"="#dbc037", "C"="#e08f38", "D"="#8C1111")
+cols <- c("X"="lightgray","A"="#197d7d", "B"="#dbc037", "C"="#e08f38", "D"="#8C1111")
 
 usa <- ggplot() +
   geom_polygon(data=spdf_fortified2, aes(x=long, y=lat, fill=bin, group=group), color="white") +
@@ -166,6 +168,13 @@ leg <- ggplot() +
   
 
 jpeg(file="/Users/jeremymack/Documents/Lehigh/R/gogs/covid19/USA_cases2.jpeg",
+     width=7,height=4.75,
+     units="in",
+     res=1200)
+usa / leg + plot_layout(heights = c(2, 1))
+dev.off()
+
+jpeg(file="/Users/jeremymack/Google Drive/R/USA_cases2.jpeg",
      width=7,height=4.75,
      units="in",
      res=1200)
