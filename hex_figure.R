@@ -239,31 +239,3 @@ jpeg(file="/Users/jeremymack/Google Drive/R/USA_cases2.jpeg",
           plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 dev.off()
-
-
-
-us_sf <- usa_sf("longlat")
-names(us_sf)[3] <- "state"
-us_sf <- us_sf %>% left_join(df.us2, by = "state")
-
-p1 <- ggplot() +
-  geom_sf(data=us_sf, aes(fill=cases),
-          size=0.0725, color="black") +
-  scale_fill_viridis(option="A",
-                     discrete = F,
-                     name = paste("Cases: ", input$date, sep=""),
-                     direction = -1,
-                     guide = guide_colourbar(
-                       direction = "horizontal",
-                       barheight = unit(2, units = "mm"),
-                       barwidth = unit(100, units = "mm"),
-                       draw.ulim = F,
-                       title.position = 'top',
-                       title.hjust = 0.5,
-                       label.hjust = 0.5)) +
-  theme(panel.grid = element_blank(),
-        line = element_blank(),
-        rect = element_blank(),
-        axis.text = element_blank(),
-        plot.background = element_rect(fill = "white"),
-        legend.position = "bottom")
