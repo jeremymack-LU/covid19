@@ -194,7 +194,7 @@ spdf_fortified2 <- spdf_fortified %>%
   left_join(. , df.states, by=c("id"="state"))
 
 spdf_fortified2$bin <- cut(spdf_fortified2$new7b,
-                           breaks=c(-20,0,0.9,9,24.9,100),
+                           breaks=c(-20,0,0.9,9,24.9,1000),
                            labels=c("X",
                                     "A",
                                     "B",

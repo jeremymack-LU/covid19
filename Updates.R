@@ -238,7 +238,7 @@ write.table(lv3,
             sep=",",
             row.names=FALSE)
 ##################################################################################
-
+# Figure of incidence in PA and Lehigh Valley over time
 pa <- df5 %>%
   mutate(New7=zoo::rollapply(New,7,mean,fill=0,align="right"),
          Incidence7=New7/(12807060/100000))
@@ -287,11 +287,11 @@ plot <- ggplot(data=Data, aes(x=Date,
                                  "Northampton County",
                                  "Pennsylvania")) +
   labs(y="Avg. daily new cases per 100,000 residents\n ",
-       caption="Data source: PA Department of Health") +
+       caption="Data source: Pennsylvania Department of Health") +
   expand_limits(y=c(0,40)) +
   scale_y_continuous(expand=c(0,0)) +
-  scale_x_date(expand=c(0.01,0)) +
-  ggtitle(label="How has COVID-19 incidence changed over time?",
+  scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
+  ggtitle(label="How has COVID-19 incidence changed over time in PA and the Lehigh Valley?",
           subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
   theme(panel.background=element_blank(),
         panel.grid=element_blank(),
@@ -314,21 +314,53 @@ plot <- ggplot(data=Data, aes(x=Date,
         legend.key.width=unit(1.2,"line"),
         legend.key.size = unit(1, 'lines')); plot
 
-jpeg(file="/Users/jeremymack/Documents/Lehigh/R/gogs/covid19/PA_LV_cases.jpeg",
-     width=7,height=3.5,
-     units="in",
-     res=600)
-plot
-dev.off()
-
 jpeg(file="/Users/jeremymack/Google Drive/R/PA_LV_cases.jpeg",
-     width=7,height=4.0,
+     width=7,height=4.5,
      units="in",
-     res=600)
+     res=1200)
 plot
 dev.off()
 ##################################################################################
+# Figure of PA new cases over time
+new <- ggplot(data=df5c, aes(x=Date, y=New7)) +
+  geom_line(color="#e08f38") +
+  geom_col(aes(y=New), alpha=0.3, width=0.7, fill="#e08f38") +
+  labs(y="Daily new cases\n ",
+       caption="Data source: Johns Hopkins University Center for Systems Science and Engineering") +
+  expand_limits(y=c(0,2500)) +
+  scale_y_continuous(expand=c(0,0)) +
+  scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
+  ggtitle(label="How have the number of new COVID-19 cases changed over time in PA?",
+          subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
+  theme(panel.background=element_blank(),
+        panel.grid=element_blank(),
+        plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
+                                margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+        plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
+                                   margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+        strip.background=element_rect(color="black", size=0.25),
+        axis.line=element_line(size=0.25),
+        axis.ticks=element_line(size=0.25),
+        axis.text=element_text(size=7, color="black"),
+        axis.title=element_text(size=8, color="black"),
+        axis.title.x=element_blank(),
+        plot.caption=element_text(size=6, color="black"),
+        legend.justification="top",
+        legend.title=element_blank(),
+        legend.position=c(0.90,1.04),
+        legend.text=element_text(size=6, color="black"),
+        legend.key=element_blank(),
+        legend.key.width=unit(1.2,"line"),
+        legend.key.size = unit(1, 'lines')); new
 
+jpeg(file="/Users/jeremymack/Google Drive/R/PA_new_cases.jpeg",
+     width=7,height=4.5,
+     units="in",
+     res=1200)
+new
+dev.off()
+##################################################################################
+# County and State level data from Johns Hopkins CSSE
 ts <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
 ts <- read.csv(ts, sep=",", header=TRUE)
 
@@ -384,13 +416,14 @@ df.us <- df.us %>%
 df.county <- df.us %>%
   group_by(state, admin2, fips) %>%
   filter(row_number()==n()) %>%
-  arrange(state, admin2)
+  arrange(state, admin2) %>%
+  mutate(date=date+1)
 
 df.county <- tibble::rowid_to_column(df.county, "id")
 
 
 write.table(df.county,
-            "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid19_county_data2.csv",
+            "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/Updates/covid19_county_data2.csv",
             sep=",",
             row.names=FALSE)
 
@@ -408,7 +441,6 @@ df.state <- df.county %>%
 names(df.state)[5] <- "FID"
   
 write.table(df.state,
-            "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid19_state_data.csv",
+            "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/Updates/covid19_state_data.csv",
             sep=",",
             row.names=FALSE)
-
