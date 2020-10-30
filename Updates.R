@@ -1,3 +1,9 @@
+###############################################
+# Updating COVID-19 numbers released by the
+# PA Department of Health
+# 
+# Code Updated - 10/30/2020
+###############################################
 library("rvest")
 library("tidyverse")
 library("zoo")
@@ -27,53 +33,53 @@ df <- sf %>%
 df <- df[,c(4:6)]
 df <- df %>% filter(PA_counties_NAME != "Pennsylvania")
 ###############################################
-# Pull data from pdfs posted by PA Department of Health - used if feature layer unvailable
-url1 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20County%20Data/County%20Case%20Counts_10-11-2020.pdf"
-
-pdf1 <- pdf_text(url1) %>%  # Select the linked PDF with case data
-  read_lines()              # Read lines into a list of vectors
-
-cases <- pdf1 %>%           # Select the list of vectors
-  str_squish() %>%          # Remove extra whitespace between elements
-  str_split(pattern=" ")    # Split vector string into pieces (i.e., columns)
-cases <- do.call(rbind,
-                 Filter(function(x) length(x)==6, cases))  # Combine list elements with 6 items
-#cases <- cases[-1,]                                        # Remove first row
-cases <- cases %>%
-  as.data.frame() %>%                             # Convert to a data frame
-  mutate(County=as.factor(V1),                    # Set County to factor
-         Cases=as.numeric(as.character(V3))) %>%  # Set Cases to numeric
-  mutate(County=str_to_sentence(County)) %>%      # Change County from all caps
-  select(7:8)
-head(cases, 5)
-
-url2 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20Death%20Data/Death%20by%20County%20of%20Residence%20--%202020-10-11.pdf"
-
-pdf2 <- pdf_text(url2) %>%  # Select the linked PDF with case data
-  read_lines()              # Read lines into a list of vectors
-
-deaths <- pdf2 %>%          # Select the list of vectors
-  str_squish() %>%          # Remove extra whitespace between elements
-  str_split(pattern=" ")    # Split vector string into pieces (i.e., columns)
-deaths <- do.call(rbind,
-                  Filter(function(x) length(x)==4, deaths)) # Combine list elements with 3 items
-deaths <- deaths %>%
-  as.data.frame() %>%                                       # Convert to a data frame
-  mutate(County=as.factor(V1),                              # Set County to factor
-         Deaths=as.numeric(gsub(",","",V2))) %>%            # Set Cases to numeric
-  select(5:6)
-head(deaths, 5)
-
-df <- merge(cases, deaths, by="County", all.x=TRUE)    # Merge by County
-df <- df %>%                                           # Set data structure for variables
-  mutate(County=as.factor(County),                     # Set County to factor
-         Cases=as.numeric(Cases),                      # Set Cases to numeric
-         Deaths=as.numeric(gsub(",","", Deaths))) %>%  # Set Deaths to numeric
-  mutate(Deaths=ifelse(is.na(Deaths),0, Deaths))       # Change NAs to 0
-head(df, 10)
-
-names(df) <- c("PA_counties_NAME", "Covid_cases", "Covid_deaths")
-
+# # Pull data from pdfs posted by PA Department of Health - used if feature layer is unavailable
+# # Uncomment the entire chunk by using Ctrl + Shift + C
+# url1 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20County%20Data/County%20Case%20Counts_10-11-2020.pdf"
+# 
+# pdf1 <- pdf_text(url1) %>%  # Select the linked PDF with case data
+#   read_lines()              # Read lines into a list of vectors
+# 
+# cases <- pdf1 %>%           # Select the list of vectors
+#   str_squish() %>%          # Remove extra whitespace between elements
+#   str_split(pattern=" ")    # Split vector string into pieces (i.e., columns)
+# cases <- do.call(rbind,
+#                  Filter(function(x) length(x)==6, cases))  # Combine list elements with 6 items
+# #cases <- cases[-1,]                                        # Remove first row
+# cases <- cases %>%
+#   as.data.frame() %>%                             # Convert to a data frame
+#   mutate(County=as.factor(V1),                    # Set County to factor
+#          Cases=as.numeric(as.character(V3))) %>%  # Set Cases to numeric
+#   mutate(County=str_to_sentence(County)) %>%      # Change County from all caps
+#   select(7:8)
+# head(cases, 5)
+# 
+# url2 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20Death%20Data/Death%20by%20County%20of%20Residence%20--%202020-10-11.pdf"
+# 
+# pdf2 <- pdf_text(url2) %>%  # Select the linked PDF with case data
+#   read_lines()              # Read lines into a list of vectors
+# 
+# deaths <- pdf2 %>%          # Select the list of vectors
+#   str_squish() %>%          # Remove extra whitespace between elements
+#   str_split(pattern=" ")    # Split vector string into pieces (i.e., columns)
+# deaths <- do.call(rbind,
+#                   Filter(function(x) length(x)==4, deaths)) # Combine list elements with 3 items
+# deaths <- deaths %>%
+#   as.data.frame() %>%                                       # Convert to a data frame
+#   mutate(County=as.factor(V1),                              # Set County to factor
+#          Deaths=as.numeric(gsub(",","",V2))) %>%            # Set Cases to numeric
+#   select(5:6)
+# head(deaths, 5)
+# 
+# df <- merge(cases, deaths, by="County", all.x=TRUE)    # Merge by County
+# df <- df %>%                                           # Set data structure for variables
+#   mutate(County=as.factor(County),                     # Set County to factor
+#          Cases=as.numeric(Cases),                      # Set Cases to numeric
+#          Deaths=as.numeric(gsub(",","", Deaths))) %>%  # Set Deaths to numeric
+#   mutate(Deaths=ifelse(is.na(Deaths),0, Deaths))       # Change NAs to 0
+# head(df, 10)
+# 
+# names(df) <- c("PA_counties_NAME", "Covid_cases", "Covid_deaths")
 ##################################################################################
 # Load and update dataset1
 df2 <- read.table("/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid19_pa_data-update.csv",
