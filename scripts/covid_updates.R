@@ -66,3 +66,27 @@ df.county <- df.county %>%
 
 write_csv(df.county,"/Users/jeremymack/Documents/GitHub/covid19/data/df_county.csv")
 
+gitstatus <- function(dir = getwd()){
+  cmd <- paste("git status ",dir,sep="")
+  system(cmd)
+}
+
+gitadd <- function(){
+  cmd <- "git add ."
+  system(cmd)
+}
+
+gitcommit <- function(){
+  cmd <- "git commit -m 'updates'"
+  system(cmd)
+}
+
+gitpush <- function(){
+  cmd <- "git push"
+  system(cmd)
+}
+
+gitstatus()
+gitadd()
+gitcommit()
+gitpush()
