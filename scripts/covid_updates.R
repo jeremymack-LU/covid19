@@ -65,4 +65,3 @@ df.county <- df.county %>%
          county=admin2)
 
 write_csv(df.county,"/Users/jeremymack/Documents/GitHub/covid19/data/df_county.csv")
-#write_csv(df.county,"/Users/jeremymack/Documents/GitHub/covid19/data/df_county2.csv")

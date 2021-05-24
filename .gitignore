@@ -4,3 +4,13 @@
 .Ruserdata
 Buildings.csv
 git.R
+data/county_names.csv
+data/fips_pa.csv
+data/fips_us.csv
+data/lu.csv
+data/pa_population.csv
+data/population.csv
+data/us_population.csv
+logs/
+netuse/
+shapefiles/
