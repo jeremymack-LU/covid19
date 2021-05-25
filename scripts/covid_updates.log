@@ -10,3 +10,6 @@ Changes not staged for commit:
 	modified:   scripts/covid_updates.log
 
 no changes added to commit (use "git add" and/or "git commit -a")
+[master d864d60] updates
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+fatal: could not read Username for 'https://github.com': Device not configured
