@@ -1,4 +1,4 @@
-pacman::p_load(tidyverse,cronR)
+pacman::p_load(tidyverse,cronR,git2r)
 
 setwd("/Users/jeremymack/Documents/GitHub/covid19")
 
@@ -68,11 +68,11 @@ df.county <- df.county %>%
 
 write_csv(df.county,"/Users/jeremymack/Documents/GitHub/covid19/data/df_county.csv")
 
-# gitstatus <- function(dir = getwd()){
-#   cmd <- paste("git status ",dir,sep="")
-#   system(cmd)
-# }
+# Configure git
+config(user.name = "jeremymack-LU",
+       user.email = "jeremy.mack@lehigh.edu")
 
+# Set working directory for use in git functions
 dir <- "/Users/jeremymack/Documents/GitHub/covid19"
 
 gitstatus <- function(){
@@ -93,11 +93,6 @@ gitadd <- function(){
   system(cmd)
 }
 
-# gitadd <- function(){
-#   cmd <- "git add ."
-#   system(cmd)
-# }
-
 gitcommit <- function(){
   cmd_list <- list(
     cmd1 = paste("cd",dir),
@@ -107,11 +102,6 @@ gitcommit <- function(){
   system(cmd)
 }
 
-# gitcommit <- function(){
-#   cmd <- "git commit -m 'updates'"
-#   system(cmd)
-# }
-
 gitpush <- function(){
   cmd_list <- list(
     cmd1 = paste("cd",dir),
@@ -120,11 +110,6 @@ gitpush <- function(){
   cmd <- paste(unlist(cmd_list),collapse = " & ")
   system(cmd)
 }
-
-# gitpush <- function(){
-#   cmd <- "git push"
-#   system(cmd)
-# }
 
 gitstatus()
 gitadd()
