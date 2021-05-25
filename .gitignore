@@ -11,6 +11,6 @@ data/lu.csv
 data/pa_population.csv
 data/population.csv
 data/us_population.csv
-logs/
+scripts/covid_updates.log
 netuse/
 shapefiles/
