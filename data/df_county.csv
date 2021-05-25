@@ -1,5 +1,5 @@
 fips,county,state,date_report,cases,deaths
-1001,Autauga,Alabama,2021-05-25,7118,111
+1001,Autauga,Alabama,2021-05-25,7118,110
 1003,Baldwin,Alabama,2021-05-25,21554,310
 1005,Barbour,Alabama,2021-05-25,2328,58
 1007,Bibb,Alabama,2021-05-25,2659,64
@@ -430,8 +430,8 @@ fips,county,state,date_report,cases,deaths
 13081,Crisp,Georgia,2021-05-25,2095,82
 13083,Dade,Georgia,2021-05-25,1445,14
 13085,Dawson,Georgia,2021-05-25,3087,46
-13087,Decatur,Georgia,2021-05-25,2943,70
 13089,DeKalb,Georgia,2021-05-25,66499,1038
+13087,Decatur,Georgia,2021-05-25,2943,70
 13091,Dodge,Georgia,2021-05-25,2109,102
 13093,Dooly,Georgia,2021-05-25,1085,46
 13095,Dougherty,Georgia,2021-05-25,7610,305
@@ -644,8 +644,8 @@ fips,county,state,date_report,cases,deaths
 17091,Kankakee,Illinois,2021-05-25,14361,211
 17093,Kendall,Illinois,2021-05-25,13177,96
 17095,Knox,Illinois,2021-05-25,5596,150
-17097,Lake,Illinois,2021-05-25,67832,996
 17099,LaSalle,Illinois,2021-05-25,12670,246
+17097,Lake,Illinois,2021-05-25,67832,996
 17101,Lawrence,Illinois,2021-05-25,2408,25
 17103,Lee,Illinois,2021-05-25,4188,52
 17105,Livingston,Illinois,2021-05-25,4856,86
@@ -712,9 +712,9 @@ fips,county,state,date_report,cases,deaths
 18023,Clinton,Indiana,2021-05-25,4311,53
 18025,Crawford,Indiana,2021-05-25,1016,15
 18027,Daviess,Indiana,2021-05-25,2991,99
+18033,DeKalb,Indiana,2021-05-25,4341,85
 18029,Dearborn,Indiana,2021-05-25,5848,78
 18031,Decatur,Indiana,2021-05-25,2873,92
-18033,DeKalb,Indiana,2021-05-25,4341,85
 18035,Delaware,Indiana,2021-05-25,10833,189
 18037,Dubois,Indiana,2021-05-25,6179,117
 18039,Elkhart,Indiana,2021-05-25,29055,447
@@ -742,8 +742,8 @@ fips,county,state,date_report,cases,deaths
 18083,Knox,Indiana,2021-05-25,3741,90
 18085,Kosciusko,Indiana,2021-05-25,9526,117
 18087,LaGrange,Indiana,2021-05-25,2703,70
-18089,Lake,Indiana,2021-05-25,54696,992
 18091,LaPorte,Indiana,2021-05-25,12200,217
+18089,Lake,Indiana,2021-05-25,54696,992
 18093,Lawrence,Indiana,2021-05-25,4648,120
 18095,Madison,Indiana,2021-05-25,12831,340
 18097,Marion,Indiana,2021-05-25,101425,1757
@@ -1141,9 +1141,9 @@ fips,county,state,date_report,cases,deaths
 22049,Jackson,Louisiana,2021-05-25,2002,50
 22051,Jefferson,Louisiana,2021-05-25,46610,897
 22053,Jefferson Davis,Louisiana,2021-05-25,3196,97
+22059,LaSalle,Louisiana,2021-05-25,1582,37
 22055,Lafayette,Louisiana,2021-05-25,23878,284
 22057,Lafourche,Louisiana,2021-05-25,9756,204
-22059,LaSalle,Louisiana,2021-05-25,1582,37
 22061,Lincoln,Louisiana,2021-05-25,4574,93
 22063,Livingston,Louisiana,2021-05-25,13612,206
 22065,Madison,Louisiana,2021-05-25,1570,40
@@ -2448,8 +2448,8 @@ fips,county,state,date_report,cases,deaths
 47033,Crockett,Tennessee,2021-05-25,2041,49
 47035,Cumberland,Tennessee,2021-05-25,6811,133
 47037,Davidson,Tennessee,2021-05-25,90012,947
-47039,Decatur,Tennessee,2021-05-25,1601,39
 47041,DeKalb,Tennessee,2021-05-25,2816,54
+47039,Decatur,Tennessee,2021-05-25,1601,39
 47043,Dickson,Tennessee,2021-05-25,6884,114
 47045,Dyer,Tennessee,2021-05-25,5452,106
 47047,Fayette,Tennessee,2021-05-25,5144,79
@@ -2582,10 +2582,10 @@ fips,county,state,date_report,cases,deaths
 48111,Dallam,Texas,2021-05-25,992,25
 48113,Dallas,Texas,2021-05-25,302651,4059
 48115,Dawson,Texas,2021-05-25,1736,69
+48123,DeWitt,Texas,2021-05-25,1933,59
 48117,Deaf Smith,Texas,2021-05-25,2833,66
 48119,Delta,Texas,2021-05-25,323,12
 48121,Denton,Texas,2021-05-25,75811,762
-48123,DeWitt,Texas,2021-05-25,1933,59
 48125,Dickens,Texas,2021-05-25,187,10
 48127,Dimmit,Texas,2021-05-25,2226,36
 48129,Donley,Texas,2021-05-25,421,15
@@ -2885,9 +2885,9 @@ fips,county,state,date_report,cases,deaths
 51670,Hopewell,Virginia,2021-05-25,2605,75
 51093,Isle of Wight,Virginia,2021-05-25,3146,69
 51095,James City,Virginia,2021-05-25,4621,72
-51097,King and Queen,Virginia,2021-05-25,400,8
 51099,King George,Virginia,2021-05-25,1725,20
 51101,King William,Virginia,2021-05-25,1229,13
+51097,King and Queen,Virginia,2021-05-25,400,8
 51103,Lancaster,Virginia,2021-05-25,715,16
 51105,Lee,Virginia,2021-05-25,2430,48
 51678,Lexington,Virginia,2021-05-25,1207,32
