@@ -66,25 +66,63 @@ df.county <- df.county %>%
 
 write_csv(df.county,"/Users/jeremymack/Documents/GitHub/covid19/data/df_county.csv")
 
-gitstatus <- function(dir = getwd()){
-  cmd <- paste("git status ",dir,sep="")
+# gitstatus <- function(dir = getwd()){
+#   cmd <- paste("git status ",dir,sep="")
+#   system(cmd)
+# }
+
+dir <- "/Users/jeremymack/Documents/GitHub/covid19"
+
+gitstatus <- function(){
+  cmd_list <- list(
+    cmd1 = paste("cd",dir),
+    cmd2 = "git status"
+  )
+  cmd <- paste(unlist(cmd_list),collapse = " & ")
   system(cmd)
 }
 
 gitadd <- function(){
-  cmd <- "git add ."
+  cmd_list <- list(
+    cmd1 = paste("cd",dir),
+    cmd2 = "git add ."
+  )
+  cmd <- paste(unlist(cmd_list),collapse = " & ")
   system(cmd)
 }
+
+# gitadd <- function(){
+#   cmd <- "git add ."
+#   system(cmd)
+# }
 
 gitcommit <- function(){
-  cmd <- "git commit -m 'updates'"
+  cmd_list <- list(
+    cmd1 = paste("cd",dir),
+    cmd2 = "git commit -m 'updates'"
+  )
+  cmd <- paste(unlist(cmd_list),collapse = " & ")
   system(cmd)
 }
 
+# gitcommit <- function(){
+#   cmd <- "git commit -m 'updates'"
+#   system(cmd)
+# }
+
 gitpush <- function(){
-  cmd <- "git push"
+  cmd_list <- list(
+    cmd1 = paste("cd",dir),
+    cmd2 = "git push"
+  )
+  cmd <- paste(unlist(cmd_list),collapse = " & ")
   system(cmd)
 }
+
+# gitpush <- function(){
+#   cmd <- "git push"
+#   system(cmd)
+# }
 
 gitstatus()
 gitadd()
