@@ -1,5 +1,7 @@
 pacman::p_load(tidyverse,cronR)
 
+setwd("/Users/jeremymack/Documents/GitHub/covid19")
+
 # County and State level data from Johns Hopkins CSSE
 ts <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
 ts <- read.csv(ts, sep=",", header=TRUE)
