@@ -69,8 +69,8 @@ df.county <- df.county %>%
 write_csv(df.county,"/Users/jeremymack/Documents/GitHub/covid19/data/df_county.csv")
 
 # Configure git
-config(user.name = "jeremymack-LU",
-       user.email = "jeremy.mack@lehigh.edu")
+#config(user.name = "jeremymack-LU",
+       #user.email = "jeremy.mack@lehigh.edu")
 
 # Set working directory for use in git functions
 dir <- "/Users/jeremymack/Documents/GitHub/covid19"
