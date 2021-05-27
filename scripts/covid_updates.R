@@ -1,6 +1,6 @@
-pacman::p_load(tidyverse,cronR,git2r)
+pacman::p_load(tidyverse,git2r)
 
-# County and State level data from Johns Hopkins CSSE
+# US time series data -----------------------------------------------------
 ts <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
 ts <- read.csv(ts, sep=",", header=TRUE)
 
@@ -64,46 +64,15 @@ df.county <- df.county %>%
   rename(date_report=date,
          county=admin2)
 
-write_csv(df.county,"/Users/jeremymack/Documents/GitHub/covid19/data/df_county.csv")
+write_csv(df.county,"data/df_county.csv")
+
+
+# Update files on Github --------------------------------------------------
+
+source("scripts/git.R")
 
 # Set working directory for use in git functions
 dir <- "/Users/jeremymack/Documents/GitHub/covid19"
-
-gitstatus <- function(){
-  cmd_list <- list(
-    cmd1 = paste("cd",dir),
-    cmd2 = "git status"
-  )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
-  system(cmd)
-}
-
-gitadd <- function(){
-  cmd_list <- list(
-    cmd1 = paste("cd",dir),
-    cmd2 = "git add ."
-  )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
-  system(cmd)
-}
-
-gitcommit <- function(){
-  cmd_list <- list(
-    cmd1 = paste("cd",dir),
-    cmd2 = "git commit -m 'updates'"
-  )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
-  system(cmd)
-}
-
-gitpush <- function(){
-  cmd_list <- list(
-    cmd1 = paste("cd",dir),
-    cmd2 = "git push"
-  )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
-  system(cmd)
-}
 
 gitstatus()
 gitadd()
