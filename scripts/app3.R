@@ -9,6 +9,8 @@ library(zoo)
 ts <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
 ts <- read_csv(ts)
 
+setwd("/Users/jeremymack/Documents/GitHub/covid19")
+
 states.pop <- read_csv("data/us_population2020.csv")
 states.pop <- states.pop %>%
   mutate(pop100=pop2020/100000)
