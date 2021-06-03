@@ -179,7 +179,7 @@ write.table(df5c,
 df5d <- df5c %>%
   mutate(Date=Date+1)
 
-write.table(df5c,
+write.table(df5d,
             "data/daily_cases_pa.csv",
             sep=",",
             row.names=FALSE)
