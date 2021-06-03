@@ -175,6 +175,14 @@ write.table(df5c,
             "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/Updates/daily_cases_pa.csv",
             sep=",",
             row.names=FALSE)
+
+df5d <- df5c %>%
+  mutate(Date=Date+1)
+
+write.table(df5c,
+            "data/daily_cases_pa.csv",
+            sep=",",
+            row.names=FALSE)
 ##################################################################################
 # Load and update incidence dataset
 df6 <- read.table("/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid19_pa_incidence.csv",
