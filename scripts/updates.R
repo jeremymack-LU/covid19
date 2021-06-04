@@ -235,25 +235,33 @@ lv2 <- lv2 %>%
                             round(New7/(368100/100000),1),
                             round(New7/(304807/100000),1)))
 
-write.table(lv2,
-            "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/Updates/covid19_lv.csv",
+# write.table(lv2,
+#             "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/Updates/covid19_lv.csv",
+#             sep=",",
+#             row.names=FALSE)
+
+lv2b <- lv2 %>%
+  mutate(Date=Date+1)
+
+write.table(lv2b,
+            "data/covid19_lv.csv",
             sep=",",
             row.names=FALSE)
 
-lv3 <- df5c %>%
-  mutate(County="Pennsylvania") %>%
-  select(County, Date, Cases, New, New7, Incidence7) %>%
-  add_row(County=lv2$County,
-          Date=lv2$Date,
-          Cases=lv2$Cases,
-          New=lv2$New,
-          New7=lv2$New7,
-          Incidence7=lv2$Incidence7)
-
-write.table(lv3,
-            "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/Updates/covid19_lv3.csv",
-            sep=",",
-            row.names=FALSE)
+# lv3 <- df5c %>%
+#   mutate(County="Pennsylvania") %>%
+#   select(County, Date, Cases, New, New7, Incidence7) %>%
+#   add_row(County=lv2$County,
+#           Date=lv2$Date,
+#           Cases=lv2$Cases,
+#           New=lv2$New,
+#           New7=lv2$New7,
+#           Incidence7=lv2$Incidence7)
+# 
+# write.table(lv3,
+#             "/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/Updates/covid19_lv3.csv",
+#             sep=",",
+#             row.names=FALSE)
 ##################################################################################
 # Figure of incidence in PA and Lehigh Valley over time
 pa <- df5 %>%
