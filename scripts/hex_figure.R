@@ -22,9 +22,9 @@ library("patchwork")
 ts <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
 ts <- read.csv(ts, sep=",", header=TRUE)
 # Load US and PA population data
-pop <- read.table("population.csv", sep=",", header=TRUE)
+pop <- read.table("data/population.csv", sep=",", header=TRUE)
 pop <- pop %>% mutate(population=as.numeric(gsub(",","",population)))
-pa.pop <- read.table("pa_population.csv", sep=",", header=TRUE); names(pa.pop)[1] <- "admin2"
+pa.pop <- read.table("data/pa_population.csv", sep=",", header=TRUE); names(pa.pop)[1] <- "admin2"
 ############################################
 # Subset to include 50 states and DC
 # Removed unassigned data

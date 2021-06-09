@@ -31,7 +31,7 @@ df <- df %>% filter(PA_counties_NAME != "Pennsylvania")
 
 # ## PA Department of Health - daily pdfs ----
 # # Uncomment the entire chunk by using Ctrl + Shift + C
-# url1 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20County%20Data/County%20Case%20Counts_4-16-2021.pdf"
+# url1 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20County%20Data/County%20Case%20Counts_6-9-2021.pdf"
 # 
 # pdf1 <- pdf_text(url1) %>%  # Select the linked PDF with case data
 #   read_lines()              # Read lines into a list of vectors
@@ -50,7 +50,7 @@ df <- df %>% filter(PA_counties_NAME != "Pennsylvania")
 #   select(7:8)
 # head(cases, 5)
 # 
-# url2 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20Death%20Data/Death%20by%20County%20of%20Residence%20--%202021-04-16.pdf"
+# url2 <- "https://www.health.pa.gov/topics/Documents/Diseases%20and%20Conditions/COVID-19%20Death%20Data/Death%20by%20County%20of%20Residence%20--%202021-06-09.pdf"
 # 
 # pdf2 <- pdf_text(url2) %>%  # Select the linked PDF with case data
 #   read_lines()              # Read lines into a list of vectors
@@ -76,8 +76,6 @@ df <- df %>% filter(PA_counties_NAME != "Pennsylvania")
 # head(df, 10)
 # 
 # names(df) <- c("PA_counties_NAME", "Covid_cases", "Covid_deaths")
-
-
 
 # Update dataset1 ---------------------------------------------------------
 # Load data
