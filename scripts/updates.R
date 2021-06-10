@@ -1,10 +1,5 @@
 # Load packages -----------------------------------------------------------
-library("rvest")
-library("tidyverse")
-library("zoo")
-library("pdftools")
-library("maps")
-library("readr")
+pacman::p_load(rvest,tidyverse,zoo,pdftools,maps,readr,devtools)
 
 devtools::install_github("yonghah/esri2sf")
 library("esri2sf")
