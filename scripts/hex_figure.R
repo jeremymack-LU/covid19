@@ -51,12 +51,6 @@ df.us <- df.us %>%
   mutate(fips=ifelse(fips==46102,46113,fips)) %>%
   mutate(fips=ifelse(fips==2158,2270,fips))
 
-# df.us2 <- df.us %>%
-#   group_by(date) %>%
-#   summarise(cases=sum(cases)) %>%
-#   mutate(new=cases-lag(cases, default=0)) %>%
-#   mutate(new7=rollapply(new,7,mean,fill=0,align="right"))
-
 # Create state data frame
 df.states <- df.us %>%
   group_by(date, state) %>%
@@ -91,12 +85,6 @@ df.pa <- df.us %>%
   mutate(pop100=population/100000,
          new7b=round(new7/pop100,1))
 
-# df.sub1 <- df.pa %>% filter(date==Sys.Date()-1)
-# df.sub1 <- left_join(df.sub1, pa.pop, by="admin2")
-# 
-# df1 <- df.sub1 %>% mutate(pop100=population/100000,
-#                           new7b=round(new7/pop100,1))
-
 cty.sf <- counties_sf("longlat")
 
 cty.sf <- cty.sf %>% 
@@ -105,12 +93,6 @@ cty.sf <- cty.sf %>%
   mutate(bin=cut(new7b,
                  breaks=c(-200,0.9,9.9,24.9,1050),
                  labels=c("A","B","C","D")))
-
-#cty_sf2 <- cty_sf %>% right_join(df.pa, by = "fips")
-
-# cty_sf2$bin <- cut(cty_sf2$new7b,
-#                    breaks=c(-200,0.9,9.9,24.9,1050),
-#                    labels=c("A","B","C","D"))
 
 cols <- c("A"="#197d7d", "B"="#dbc037", "C"="#e08f38", "D"="#8C1111")
 
@@ -148,11 +130,7 @@ spdf_fortified2 <- spdf_fortified %>%
 
 spdf_fortified2$bin <- cut(spdf_fortified2$new7b,
                            breaks=c(-200,0,0.9,9,24.9,10000),
-                           labels=c("X",
-                                    "A",
-                                    "B",
-                                    "C",
-                                    "D"))
+                           labels=c("X","A","B","C","D"))
 
 cols <- c("X"="lightgray","A"="#197d7d", "B"="#dbc037", "C"="#e08f38", "D"="#8C1111")
 

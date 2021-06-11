@@ -72,6 +72,7 @@ df <- df %>% filter(PA_counties_NAME != "Pennsylvania")
 # 
 # names(df) <- c("PA_counties_NAME", "Covid_cases", "Covid_deaths")
 
+
 # Update dataset1 ---------------------------------------------------------
 # Load data
 df2 <- read.table("/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid19_pa_data-update.csv",
