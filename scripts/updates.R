@@ -1,8 +1,8 @@
 # Load packages -----------------------------------------------------------
-pacman::p_load(rvest,tidyverse,zoo,pdftools,maps,readr,devtools)
+pacman::p_load(rvest,tidyverse,zoo,pdftools,maps,readr,devtools,esri2sf)
 
-devtools::install_github("yonghah/esri2sf")
-library("esri2sf")
+# devtools::install_github("yonghah/esri2sf")
+# library("esri2sf")
 
 # Covid-19 data -----------------------------------------------------------
 ## PA Department of Health - feature layer ----
