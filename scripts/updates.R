@@ -79,6 +79,8 @@ df2 <- read.table("/Users/jeremymack/Documents/Lehigh/GIS/Projects/COVID19/covid
                   sep=",",
                   header=TRUE)
 
+sum(df$Covid_cases) - sum(df2$Covid_cases)
+
 df2 <- df2 %>% mutate(Covid_cases=df$Covid_cases,
                       Covid_deaths=df$Covid_deaths)
 
@@ -308,7 +310,7 @@ plot <- ggplot(data=Data, aes(x=Date,
   labs(y="Avg. daily new cases per 100,000 residents\n ",
        caption="Data source: Pennsylvania Department of Health") +
   expand_limits(y=c(0,40)) +
-  scale_y_continuous(expand=c(0,0)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,140), breaks=seq(0,140,20)) +
   scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
   ggtitle(label="How has COVID-19 incidence changed over time in PA and the Lehigh Valley?",
           subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
