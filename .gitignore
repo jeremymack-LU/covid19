@@ -4,6 +4,7 @@
 .Ruserdata
 Buildings.csv
 git.R
+app.R
 data/county_names.csv
 data/fips_pa.csv
 data/fips_us.csv

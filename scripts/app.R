@@ -71,11 +71,11 @@ df.pa <- cbind(df.pa, dates2); df.pa <- df.pa[,c(1,4,3)]
 names(df.pa)[1] <- "fips"
 
 # Load US and PA population data
-pop.us <- read.table("us_population.csv", sep=",", header=TRUE)
+pop.us <- read.table("data/us_population.csv", sep=",", header=TRUE)
 pop.us <- pop.us %>% mutate(population=as.numeric(gsub(",","",pop_2015)))
 
 # Load PA population data
-pop.pa  <- read.table("pa_population.csv", sep=",", header=TRUE); names(pop.pa)[1] <- "admin2"
+pop.pa  <- read.table("data/pa_population.csv", sep=",", header=TRUE); names(pop.pa)[1] <- "admin2"
 fips.pa <- fips.pa <- read.csv("fips_pa.csv", header=TRUE)
 pop.pa  <- pop.pa %>% left_join(fips.pa, by="admin2")
 
