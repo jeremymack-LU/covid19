@@ -67,7 +67,6 @@ df.county <- df.county %>%
 
 write_csv(df.county,"data/df_county.csv")
 
-
 # Update files on Github --------------------------------------------------
 
 source("scripts/git.R")
