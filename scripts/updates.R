@@ -114,7 +114,7 @@ df4 <- read.table("covid19_pa_counties.csv",
 df4 <- df4 %>% mutate(Date=as.Date(Date, format="%Y-%m-%d"))
 
 df <- df %>% 
-  mutate(Date=Sys.Date()) %>%
+  mutate(Date=Sys.Date()-1) %>%
   mutate(County=PA_counties_NAME,
          Date=Date,
          Cases=as.integer(Covid_cases),
@@ -143,7 +143,7 @@ df5 <- df5 %>% mutate(Date=as.Date(Date, format="%Y-%m-%d"))
 
 df5 <- df5 %>%
   #mutate(Date=as.Date(Date, format="%m/%d/%y")) %>%
-  add_row(Date=Sys.Date(),
+  add_row(Date=Sys.Date()-1,
           Cases=sum(df$Cases),
           New=NA) %>%
   mutate(New=Cases-lag(Cases, default=2))
