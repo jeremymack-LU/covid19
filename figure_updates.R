@@ -199,7 +199,7 @@ states.sf <- usa_sf("longlat")
 usa <- ggplot() +
   geom_sf(data=cty.sf, aes(fill=bin2),
           size=0.25, color="white") +
-  geom_sf(data=states.sf, color="white",fill=NA, size=0.5) +
+  geom_sf(data=states.sf, color="white",fill=NA, size=0.3) +
   scale_fill_manual(values=cols3) +
   theme_void() +
   theme(
@@ -282,6 +282,19 @@ jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking.jpeg",
      units="in",
      res=1200)
 ((usa+pa2+plot_layout(width=c(1,1)))/leg2)+plot_layout(heights = c(2,1)) + plot_annotation(
+  title='CDC Advises Masking Indoors In Counties With Substantial\nOr High Coronavirus Spread?',
+  subtitle=paste("Data as of 11:59 p.m. ET", Sys.Date()-1)
+) & theme(plot.title=element_text(size= 12, hjust=0.5, color="#4e4d47",
+                                  margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+          plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
+                                     margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
+dev.off()
+
+jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking.jpeg",
+     width=7,height=6,
+     units="in",
+     res=1200)
+usa/leg2+plot_layout(heights = c(2,1)) + plot_annotation(
   title='CDC Advises Masking Indoors In Counties With Substantial\nOr High Coronavirus Spread?',
   subtitle=paste("Data as of 11:59 p.m. ET", Sys.Date()-1)
 ) & theme(plot.title=element_text(size= 12, hjust=0.5, color="#4e4d47",
