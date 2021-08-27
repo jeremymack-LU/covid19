@@ -180,6 +180,44 @@ jpeg(file="/Users/jeremymack/Google Drive/R/PA_LV_cases.jpeg",
 plot
 dev.off()
 
+# Figure of PA new cases over time ----------------------------------------
+new <- ggplot(data=df.pa.sum, aes(x=Date, y=New7)) +
+  geom_line(color="#e08f38") +
+  geom_col(aes(y=New), alpha=0.3, width=0.7, fill="#e08f38") +
+  labs(y="Daily new cases\n ",
+       caption="Data source: Johns Hopkins University Center for Systems Science and Engineering") +
+  expand_limits(y=c(0,2500)) +
+  scale_y_continuous(expand=c(0,0)) +
+  scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
+  ggtitle(label="How have the number of new COVID-19 cases changed over time in PA?",
+          subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
+  theme(panel.background=element_blank(),
+        panel.grid=element_blank(),
+        plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
+                                margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+        plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
+                                   margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+        strip.background=element_rect(color="black", size=0.25),
+        axis.line=element_line(size=0.25),
+        axis.ticks=element_line(size=0.25),
+        axis.text=element_text(size=7, color="black"),
+        axis.title=element_text(size=8, color="black"),
+        axis.title.x=element_blank(),
+        plot.caption=element_text(size=6, color="black"),
+        legend.justification="top",
+        legend.title=element_blank(),
+        legend.position=c(0.90,1.04),
+        legend.text=element_text(size=6, color="black"),
+        legend.key=element_blank(),
+        legend.key.width=unit(1.2,"line"),
+        legend.key.size = unit(1, 'lines')); new
+
+jpeg(file="/Users/jeremymack/Google Drive/R/PA_new_cases.jpeg",
+     width=7,height=4.5,
+     units="in",
+     res=1200)
+new
+dev.off()
 
 # Update files on Github --------------------------------------------------
 
