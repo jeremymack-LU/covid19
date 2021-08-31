@@ -81,7 +81,8 @@ df.pa <- df.us %>%
 df.pa.sum <- df.pa %>%
   group_by(Date) %>%
   summarize(Cases=sum(Cases,na.rm=TRUE)) %>%
-  mutate(New=Cases-lag(Cases, default=0)) %>%
+  mutate(Date=Date+1,
+         New=Cases-lag(Cases, default=0)) %>%
   mutate(New7=rollapply(New,7,mean,fill=0,align="right"),
          Incidence7=round(New7/(12801989/100000),1)) %>%
   tibble()
@@ -98,7 +99,8 @@ df.lv <- df.pa %>%
 
 df.lv <- df.lv %>%
   group_by(County) %>%
-  mutate(New7=rollapply(New,7,mean,fill=0,align="right"),
+  mutate(Date=Date+1,
+         New7=rollapply(New,7,mean,fill=0,align="right"),
          Incidence7=case_when(
            County=="Lehigh" ~ round(New7/(368100/100000),1),
            TRUE ~ round(New7/(304807/100000),1)
@@ -186,7 +188,8 @@ new <- ggplot(data=df.pa.sum, aes(x=Date, y=New7)) +
   geom_col(aes(y=New), alpha=0.3, width=0.7, fill="#e08f38") +
   labs(y="Daily new cases\n ",
        caption="Data source: Johns Hopkins University Center for Systems Science and Engineering") +
-  expand_limits(y=c(0,2500)) +
+  #expand_limits(y=c(0,2500)) +
+  expand_limits(y=c(0,15000)) +
   scale_y_continuous(expand=c(0,0)) +
   scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
   ggtitle(label="How have the number of new COVID-19 cases changed over time in PA?",

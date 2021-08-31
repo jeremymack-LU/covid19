@@ -277,11 +277,11 @@ jpeg(file="/Users/jeremymack/Google Drive/R/USA_cases2.jpeg",
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 dev.off()
 
-jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking.jpeg",
-     width=7,height=4.75,
+jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking_us.jpeg",
+     width=7,height=6,
      units="in",
      res=1200)
-((usa+pa2+plot_layout(width=c(1,1)))/leg2)+plot_layout(heights = c(2,1)) + plot_annotation(
+usa/leg2+plot_layout(heights = c(2,1)) + plot_annotation(
   title='CDC Advises Masking Indoors In Counties With Substantial\nOr High Coronavirus Spread?',
   subtitle=paste("Data as of 11:59 p.m. ET", Sys.Date()-1)
 ) & theme(plot.title=element_text(size= 12, hjust=0.5, color="#4e4d47",
@@ -290,11 +290,11 @@ jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking.jpeg",
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 dev.off()
 
-jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking.jpeg",
+jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking_pa.jpeg",
      width=7,height=6,
      units="in",
      res=1200)
-usa/leg2+plot_layout(heights = c(2,1)) + plot_annotation(
+pa2/leg2+plot_layout(heights = c(2,1)) + plot_annotation(
   title='CDC Advises Masking Indoors In Counties With Substantial\nOr High Coronavirus Spread?',
   subtitle=paste("Data as of 11:59 p.m. ET", Sys.Date()-1)
 ) & theme(plot.title=element_text(size= 12, hjust=0.5, color="#4e4d47",
