@@ -175,7 +175,7 @@ plot <- ggplot(data=df.lv, aes(x=Date,
         legend.key.width=unit(1.2,"line"),
         legend.key.size = unit(1, 'lines')); plot
 
-jpeg(file="/Users/jeremymack/Google Drive/R/PA_LV_cases.jpeg",
+jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/PA_LV_cases.jpeg",
      width=7,height=4.5,
      units="in",
      res=1200)
@@ -215,7 +215,7 @@ new <- ggplot(data=df.pa.sum, aes(x=Date, y=New7)) +
         legend.key.width=unit(1.2,"line"),
         legend.key.size = unit(1, 'lines')); new
 
-jpeg(file="/Users/jeremymack/Google Drive/R/PA_new_cases.jpeg",
+jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/PA_new_cases.jpeg",
      width=7,height=4.5,
      units="in",
      res=1200)

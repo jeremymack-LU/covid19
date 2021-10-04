@@ -264,7 +264,7 @@ source("scripts/custom_legend.R")
           plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 
-jpeg(file="/Users/jeremymack/Google Drive/R/USA_cases2.jpeg",
+jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/USA_cases2.jpeg",
      width=7,height=4.75,
      units="in",
      res=1200)
@@ -277,7 +277,7 @@ jpeg(file="/Users/jeremymack/Google Drive/R/USA_cases2.jpeg",
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 dev.off()
 
-jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking_us.jpeg",
+jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/CDC_masking_us.jpeg",
      width=7,height=6,
      units="in",
      res=1200)
@@ -290,7 +290,7 @@ usa/leg2+plot_layout(heights = c(2,1)) + plot_annotation(
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 dev.off()
 
-jpeg(file="/Users/jeremymack/Google Drive/R/CDC_masking_pa.jpeg",
+jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/CDC_masking_pa.jpeg",
      width=7,height=6,
      units="in",
      res=1200)
@@ -403,7 +403,7 @@ usa.vac + pa.vac + plot_annotation(
         plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
                                    margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 
-jpeg(file="/Users/jeremymack/Google Drive/R/vaccination.jpeg",
+jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/vaccination.jpeg",
      width=7,height=4.75,
      units="in",
      res=1200)
