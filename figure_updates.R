@@ -357,8 +357,8 @@ pa.vac <- read_csv("https://data.pa.gov/resource/gcnb-epac.csv")
 
 pa.vac <- pa.vac %>%
   rename(population=county_population,
-         partial=partiallycovered,
-         full=fullycovered) %>%
+         partial=partially_covered,
+         full=fully_covered) %>%
   mutate(per.partial=(partial/population)*100,
          per.full=(full/population)*100,
          per.one=((partial+full)/population)*100,
