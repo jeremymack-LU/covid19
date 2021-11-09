@@ -175,7 +175,7 @@ plot <- ggplot(data=df.lv, aes(x=Date,
         legend.key.width=unit(1.2,"line"),
         legend.key.size = unit(1, 'lines')); plot
 
-jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/PA_LV_cases.jpeg",
+jpeg(file="output/PA_LV_cases.jpeg",
      width=7,height=4.5,
      units="in",
      res=1200)
@@ -215,12 +215,23 @@ new <- ggplot(data=df.pa.sum, aes(x=Date, y=New7)) +
         legend.key.width=unit(1.2,"line"),
         legend.key.size = unit(1, 'lines')); new
 
-jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/PA_new_cases.jpeg",
+jpeg(file="output/PA_new_cases.jpeg",
      width=7,height=4.5,
      units="in",
      res=1200)
 new
 dev.off()
+
+# Update files on Google Drive --------------------------------------------
+library(googledrive)
+
+drive_auth_configure(
+  path="data/client_secret_1055497976267-6fk2msjr8u13ldumbkfsu346rrd2tvo8.apps.googleusercontent.com.json"
+)
+
+drive_update(as_id('1h5bqK5doNf2MsleGsyXrzVh297yGLcR9'), 'output/PA_LV_cases.jpeg')
+
+drive_update(as_id('1NNP5cpheokl4rwAVLtiKriWIWvU3oG2J'), 'output/PA_new_cases.jpeg')
 
 # Update files on Github --------------------------------------------------
 

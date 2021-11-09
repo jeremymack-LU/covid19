@@ -12,7 +12,9 @@ data/lu.csv
 data/pa_population.csv
 data/population.csv
 data/us_population.csv
+data/client_secret_1055497976267-6fk2msjr8u13ldumbkfsu346rrd2tvo8.apps.googleusercontent.com.json
 scripts/covid_updates.log
 scripts/custom_legend.R
 netuse/
 shapefiles/
+output/
