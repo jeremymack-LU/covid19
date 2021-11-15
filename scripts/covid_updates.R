@@ -225,7 +225,8 @@ dev.off()
 # Update files on Google Drive --------------------------------------------
 library(googledrive)
 
-drive_auth_configure(
+drive_auth(
+  email="jsm4@lehigh.edu",
   path="data/client_secret_1055497976267-6fk2msjr8u13ldumbkfsu346rrd2tvo8.apps.googleusercontent.com.json"
 )
 

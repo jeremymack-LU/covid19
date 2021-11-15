@@ -264,7 +264,7 @@ source("scripts/custom_legend.R")
           plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 
-jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/USA_cases2.jpeg",
+jpeg(file="output/USA_cases2.jpeg",
      width=7,height=4.75,
      units="in",
      res=1200)
@@ -277,7 +277,7 @@ jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/USA_cases2.jpeg",
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 dev.off()
 
-jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/CDC_masking_us.jpeg",
+jpeg(file="output/CDC_masking_us.jpeg",
      width=7,height=6,
      units="in",
      res=1200)
@@ -290,7 +290,7 @@ usa/leg2+plot_layout(heights = c(2,1)) + plot_annotation(
                                      margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 dev.off()
 
-jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/CDC_masking_pa.jpeg",
+jpeg(file="output/CDC_masking_pa.jpeg",
      width=7,height=6,
      units="in",
      res=1200)
@@ -403,7 +403,7 @@ usa.vac + pa.vac + plot_annotation(
         plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
                                    margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
 
-jpeg(file="/Users/jeremymack/Google Drive/Lehigh/R/vaccination.jpeg",
+jpeg(file="output/vaccination.jpeg",
      width=7,height=4.75,
      units="in",
      res=1200)
@@ -415,3 +415,19 @@ usa.vac + pa.vac + plot_annotation(
         plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
                                    margin=margin(b = 0, t = 0.4, l = 2, unit = "cm")))
 dev.off()
+
+# Update files on Google Drive --------------------------------------------
+library(googledrive)
+
+drive_auth(
+  email="jsm4@lehigh.edu",
+  path="data/client_secret_1055497976267-6fk2msjr8u13ldumbkfsu346rrd2tvo8.apps.googleusercontent.com.json"
+)
+
+drive_update(as_id('10jY1mgIreHg2CAEsvM4h9AHmt2D4l-GE'), 'output/CDC_masking_pa.jpeg')
+
+drive_update(as_id('16RbIjZD5KfMwSWKW8t4WpE_ZjlCBicit'), 'output/CDC_masking_us.jpeg')
+
+drive_update(as_id('1z6Ykx6VCRw_e_q92Ee-5XQhCM1Dd04NF'), 'output/vaccination.jpeg')
+
+drive_update(as_id('1_KHASISfH00e5s0jqeCitfk2V1ND2oSN'), 'output/USA_cases2.jpeg')
