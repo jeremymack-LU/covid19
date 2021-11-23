@@ -330,6 +330,8 @@ spdf_fortified2 <- spdf_fortified2 %>%
 # 
 # cols2 <- c("A"="#e1e7f0", "B"="#8ba4c9", "C"="#3865a8", "D"="#031f4a")
 
+vac.label <- scales::label_percent(accuracy=1)
+
 usa.vac <- ggplot() +
   geom_polygon(data=spdf_fortified2, 
                aes(x=long, y=lat, fill=series_complete_pop_pct/100, group=group),
@@ -341,7 +343,7 @@ usa.vac <- ggplot() +
   coord_map() +
   scale_fill_gradient(high = "#132B43",
                       low = "#a4d2f5",
-                      labels = scales::percent) +
+                      labels = vac.label) +
   theme(legend.position=c(0.5,0.95),
         legend.title=element_blank(),
         legend.direction="horizontal",
@@ -383,12 +385,12 @@ pa.vac <- ggplot() +
   #scale_fill_manual(values=cols) +
   scale_fill_gradient(high = "#132B43",
                       low = "#a4d2f5",
-                      labels = scales::percent) +
+                      labels = vac.label) +
   theme_void() +
   theme(legend.position=c(0.5,0.95),
         legend.title=element_blank(),
         legend.direction="horizontal",
-        legend.key.width = unit(0.5, "cm"),
+        legend.key.width = unit(1, "cm"),
         legend.key.height = unit(0.3, "cm"),
         legend.text = element_text(size=7),
         text=element_text(color="#22211d"),
