@@ -83,8 +83,8 @@ df.pa.sum <- df.pa %>%
   summarize(Cases=sum(Cases,na.rm=TRUE)) %>%
   mutate(Date=Date+1,
          New=Cases-lag(Cases, default=0)) %>%
-  mutate(New7=rollapply(New,7,mean,fill=0,align="right"),
-         Incidence7=round(New7/(12801989/100000),1)) %>%
+  mutate(New14=rollapply(New,14,mean,fill=0,align="right"),
+         Incidence14=round(New14/(12801989/100000),1)) %>%
   tibble()
 
 write_csv(df.pa.sum,"data/daily_cases_pa.csv")
@@ -100,10 +100,10 @@ df.lv <- df.pa %>%
 df.lv <- df.lv %>%
   group_by(County) %>%
   mutate(Date=Date+1,
-         New7=rollapply(New,7,mean,fill=0,align="right"),
-         Incidence7=case_when(
-           County=="Lehigh" ~ round(New7/(368100/100000),1),
-           TRUE ~ round(New7/(304807/100000),1)
+         New14=rollapply(New,14,mean,fill=0,align="right"),
+         Incidence14=case_when(
+           County=="Lehigh" ~ round(New14/(368100/100000),1),
+           TRUE ~ round(New14/(304807/100000),1)
          )) %>%
   tibble()
 
@@ -117,14 +117,21 @@ df.lv <- df.lv %>%
   add_row(df.pa.sum)
 
 plot <- ggplot(data=df.lv, aes(x=Date,
-                              y=Incidence7,
-                              color=County,
-                              group=County,
-                              fill=County,
-                              size=County,
-                              linetype=County)) +
+                               y=Incidence14,
+                               color=County,
+                               group=County,
+                               fill=County,
+                               size=County,
+                               linetype=County)) +
   geom_line(position="identity") +
   geom_area(position="identity", alpha=0.1, show.legend=FALSE) +
+  annotate("text",
+           label="* Data smoothed as two-week averages",
+           x=as.Date('2020-01-23'),
+           y=97,
+           hjust=0,
+           vjust=1,
+           size=6/.pt) +
   scale_color_manual(values=c(Lehigh="Blue",
                               Northampton="Orange",
                               Pennsylvania="Black"),
@@ -149,8 +156,10 @@ plot <- ggplot(data=df.lv, aes(x=Date,
   labs(y="Avg. daily new cases per 100,000 residents\n ",
        caption="Data source: Pennsylvania Department of Health") +
   expand_limits(y=c(0,40)) +
-  scale_y_continuous(expand=c(0,0), limits=c(0,140), breaks=seq(0,140,20)) +
-  scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
+  scale_y_continuous(expand=c(0,0), limits=c(0,120), breaks=seq(0,120,20)) +
+  scale_x_date(expand=c(0.01,0),
+               date_breaks = "2 month",
+               date_labels = "%b '%y") +
   ggtitle(label="How has COVID-19 incidence changed over time in PA and the Lehigh Valley?",
           subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
   theme(panel.background=element_blank(),
@@ -183,7 +192,7 @@ plot
 dev.off()
 
 # Figure of PA new cases over time ----------------------------------------
-new <- ggplot(data=df.pa.sum, aes(x=Date, y=New7)) +
+new <- ggplot(data=df.pa.sum, aes(x=Date, y=New14)) +
   geom_line(color="#e08f38") +
   geom_col(aes(y=New), alpha=0.3, width=0.7, fill="#e08f38") +
   labs(y="Daily new cases\n ",
