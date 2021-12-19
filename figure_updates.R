@@ -163,6 +163,7 @@ ts.pa <- ts %>%
   filter(county != "Unknown")
 
 cty.sf <- counties_sf("longlat")
+st_crs(cty.sf) <- st_crs(cty.sf)
 
 pa.sf <- cty.sf %>%
   #mutate(fips=as.integer(stringr::str_remove(fips, "^0+"))) %>%
@@ -196,6 +197,8 @@ cty.sf <- cty.sf %>%
 
 # US plot - weekly cases per capita by county -----------------------------
 states.sf <- usa_sf("longlat")
+st_crs(states.sf) <- st_crs(states.sf)
+
 usa <- ggplot() +
   geom_sf(data=cty.sf, aes(fill=bin2),
           size=0.25, color="white") +
