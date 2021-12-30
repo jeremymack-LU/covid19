@@ -153,7 +153,7 @@ plot <- ggplot(data=df.lv, aes(x=Date,
                         labels=c("Lehigh County",
                                  "Northampton County",
                                  "Pennsylvania")) +
-  labs(y="Avg. daily new cases per 100,000 residents\n ",
+  labs(y="Number of daily new cases per 100,000 residents (14-day avg.)\n ",
        caption="Data source: Pennsylvania Department of Health") +
   expand_limits(y=c(0,40)) +
   scale_y_continuous(expand=c(0,0), limits=c(0,120), breaks=seq(0,120,20)) +
@@ -189,6 +189,57 @@ jpeg(file="output/PA_LV_cases.jpeg",
      units="in",
      res=1200)
 plot
+dev.off()
+
+# Lehigh Valley hospitalizations ------------------------------------------
+beds.L <- read_csv('https://data.pa.gov/resource/kayn-sjhx.csv?county=Lehigh')
+beds.N <- read_csv('https://data.pa.gov/resource/kayn-sjhx.csv?county=Northampton')
+beds   <- beds.L %>% add_row(beds.N)
+
+beds.total <- beds %>% 
+  group_by(date) %>% 
+  summarize(total=sum(covid_patients_mean,na.rm=TRUE))
+
+hosp <- beds.total %>%
+  ggplot(aes(as.Date(date),total)) +
+  geom_line(position="identity",size=0.15) +
+  geom_area(position="identity", alpha=0.1, show.legend=FALSE) +
+  labs(y="Number of COVID-19 patients hospitalized (14-day avg.)\n ",
+       caption="Data source: Pennsylvania Department of Health") +
+  expand_limits(y=c(0,500)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,500), breaks=seq(0,500,50)) +
+  scale_x_date(expand=c(0.01,0),
+               date_breaks = "2 month",
+               date_labels = "%b '%y") +
+  ggtitle(label="How have hospitalizations from COVID-19 changed over time in the Lehigh Valley?",
+          subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
+  theme(panel.background=element_blank(),
+        panel.grid=element_blank(),
+        plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
+                                margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+        plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
+                                   margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+        strip.background=element_rect(color="black", size=0.25),
+        axis.line=element_line(size=0.25),
+        axis.ticks=element_line(size=0.25),
+        axis.text=element_text(size=7, color="black"),
+        axis.title=element_text(size=8, color="black"),
+        axis.title.x=element_blank(),
+        plot.caption=element_text(size=6, color="black"),
+        legend.justification="top",
+        legend.title=element_blank(),
+        legend.background=element_blank(),
+        legend.position=c(0.1,1.04),
+        legend.text=element_text(size=6, color="black"),
+        legend.key=element_blank(),
+        legend.key.width=unit(1.2,"line"),
+        legend.key.size = unit(1, 'lines')); hosp
+
+jpeg(file="output/LV_hospitalizations.jpeg",
+     width=7,height=4.5,
+     units="in",
+     res=1200)
+hosp
 dev.off()
 
 # Figure of PA new cases over time ----------------------------------------
@@ -242,6 +293,8 @@ drive_auth(
 drive_update(as_id('1h5bqK5doNf2MsleGsyXrzVh297yGLcR9'), 'output/PA_LV_cases.jpeg')
 
 drive_update(as_id('1NNP5cpheokl4rwAVLtiKriWIWvU3oG2J'), 'output/PA_new_cases.jpeg')
+
+drive_update(as_id('1NKnjpgc3g0UE6Ftroslm1AbttHzKAF0G'), 'output/LV_hospitalizations.jpeg')
 
 # Update files on Github --------------------------------------------------
 
