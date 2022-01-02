@@ -128,7 +128,7 @@ plot <- ggplot(data=df.lv, aes(x=Date,
   annotate("text",
            label="* Data smoothed as two-week averages",
            x=as.Date('2020-01-23'),
-           y=97,
+           y=112,
            hjust=0,
            vjust=1,
            size=6/.pt) +
@@ -155,8 +155,8 @@ plot <- ggplot(data=df.lv, aes(x=Date,
                                  "Pennsylvania")) +
   labs(y="Number of daily new cases per 100,000 residents (14-day avg.)\n ",
        caption="Data source: Pennsylvania Department of Health") +
-  expand_limits(y=c(0,40)) +
-  scale_y_continuous(expand=c(0,0), limits=c(0,120), breaks=seq(0,120,20)) +
+  expand_limits(y=c(0,140)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,140), breaks=seq(0,140,20)) +
   scale_x_date(expand=c(0.01,0),
                date_breaks = "2 month",
                date_labels = "%b '%y") +
