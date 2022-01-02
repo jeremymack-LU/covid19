@@ -249,7 +249,7 @@ new <- ggplot(data=df.pa.sum, aes(x=Date, y=New14)) +
   labs(y="Daily new cases\n ",
        caption="Data source: Johns Hopkins University Center for Systems Science and Engineering") +
   #expand_limits(y=c(0,2500)) +
-  expand_limits(y=c(0,15000)) +
+  expand_limits(y=c(0,20000)) +
   scale_y_continuous(expand=c(0,0)) +
   scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
   ggtitle(label="How have the number of new COVID-19 cases changed over time in PA?",
