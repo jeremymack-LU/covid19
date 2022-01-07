@@ -200,6 +200,8 @@ beds.total <- beds %>%
   group_by(date) %>% 
   summarize(total=sum(covid_patients_mean,na.rm=TRUE))
 
+write_csv(beds.total,"data/hospitalizations.csv")
+
 hosp <- beds.total %>%
   ggplot(aes(as.Date(date),total)) +
   geom_line(position="identity",size=0.15) +
