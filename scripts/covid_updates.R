@@ -116,22 +116,39 @@ df.pa.sum <- df.pa.sum %>%
 df.lv <- df.lv %>%
   add_row(df.pa.sum)
 
-plot <- ggplot(data=df.lv, aes(x=Date,
-                               y=Incidence14,
-                               color=County,
-                               group=County,
-                               fill=County,
-                               size=County,
-                               linetype=County)) +
-  geom_line(position="identity") +
+theme <- theme(panel.background=element_blank(),
+               panel.grid=element_blank(),
+               plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
+                                       margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+               plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
+                                          margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+               strip.background=element_rect(color="black", size=0.25),
+               axis.line=element_line(size=0.25),
+               axis.ticks=element_line(size=0.25),
+               axis.text=element_text(size=7, color="black"),
+               axis.title=element_text(size=8, color="black"),
+               axis.title.x=element_blank(),
+               plot.caption=element_text(size=6, color="black"),
+               legend.justification="top",
+               legend.title=element_blank(),
+               legend.background=element_blank(),
+               legend.position=c(0.5,0.96),
+               legend.direction='horizontal',
+               legend.text=element_text(size=6, color="black"),
+               legend.key=element_blank(),
+               legend.key.width=unit(1.2,"line"),
+               legend.key.size = unit(1, 'lines'))
+
+plot <- ggplot(data=df.lv,
+       aes(x=Date,
+           y=Incidence14,
+           color=County,
+           group=County,
+           fill=County,
+           size=County,
+           linetype=County)) +
+  geom_line(position="identity", size=0.7, alpha=0.7) +
   geom_area(position="identity", alpha=0.1, show.legend=FALSE) +
-  annotate("text",
-           label="* Data smoothed as two-week averages",
-           x=as.Date('2020-01-23'),
-           y=130,
-           hjust=0,
-           vjust=1,
-           size=6/.pt) +
   scale_color_manual(values=c(Lehigh="Blue",
                               Northampton="Orange",
                               Pennsylvania="Black"),
@@ -153,36 +170,13 @@ plot <- ggplot(data=df.lv, aes(x=Date,
                         labels=c("Lehigh County",
                                  "Northampton County",
                                  "Pennsylvania")) +
-  labs(y="Number of daily new cases per 100,000 residents (14-day avg.)\n ",
-       caption="Data source: Pennsylvania Department of Health") +
-  expand_limits(y=c(0,160)) +
-  scale_y_continuous(expand=c(0,0), limits=c(0,160), breaks=seq(0,160,20)) +
-  scale_x_date(expand=c(0.01,0),
-               date_breaks = "2 month",
-               date_labels = "%b '%y") +
+  labs(y="Daily new cases per 100,000 residents (14-day avg.)\n ",
+       caption="\nData source: Pennsylvania Department of Health") +
+  scale_y_continuous(expand=c(0,0), limits=c(0,200), breaks=seq(0,200,20)) +
+  scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b\n'%y") +
   ggtitle(label="How has COVID-19 incidence changed over time in PA and the Lehigh Valley?",
-          subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
-  theme(panel.background=element_blank(),
-        panel.grid=element_blank(),
-        plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
-                                margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
-        plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
-                                   margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
-        strip.background=element_rect(color="black", size=0.25),
-        axis.line=element_line(size=0.25),
-        axis.ticks=element_line(size=0.25),
-        axis.text=element_text(size=7, color="black"),
-        axis.title=element_text(size=8, color="black"),
-        axis.title.x=element_blank(),
-        plot.caption=element_text(size=6, color="black"),
-        legend.justification="top",
-        legend.title=element_blank(),
-        legend.background=element_blank(),
-        legend.position=c(0.1,1.04),
-        legend.text=element_text(size=6, color="black"),
-        legend.key=element_blank(),
-        legend.key.width=unit(1.2,"line"),
-        legend.key.size = unit(1, 'lines')); plot
+          subtitle=paste("Data as of 6:00 a.m. ET", Sys.Date())) +
+  theme; plot
 
 jpeg(file="output/PA_LV_cases.jpeg",
      width=7,height=4.5,
@@ -204,38 +198,17 @@ write_csv(beds.total,"data/hospitalizations.csv")
 
 hosp <- beds.total %>%
   ggplot(aes(as.Date(date),total)) +
-  geom_line(position="identity",size=0.15) +
+  geom_line(position="identity", size=0.7, alpha=0.7) +
   geom_area(position="identity", alpha=0.1, show.legend=FALSE) +
   labs(y="Number of COVID-19 patients hospitalized (14-day avg.)\n ",
-       caption="Data source: Pennsylvania Department of Health") +
-  expand_limits(y=c(0,500)) +
+       caption="\nData source: Pennsylvania Department of Health") +
   scale_y_continuous(expand=c(0,0), limits=c(0,500), breaks=seq(0,500,50)) +
   scale_x_date(expand=c(0.01,0),
-               date_breaks = "2 month",
-               date_labels = "%b '%y") +
+               date_breaks = "1 month",
+               date_labels = "%b\n'%y") +
   ggtitle(label="How have hospitalizations from COVID-19 changed over time in the Lehigh Valley?",
           subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
-  theme(panel.background=element_blank(),
-        panel.grid=element_blank(),
-        plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
-                                margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
-        plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
-                                   margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
-        strip.background=element_rect(color="black", size=0.25),
-        axis.line=element_line(size=0.25),
-        axis.ticks=element_line(size=0.25),
-        axis.text=element_text(size=7, color="black"),
-        axis.title=element_text(size=8, color="black"),
-        axis.title.x=element_blank(),
-        plot.caption=element_text(size=6, color="black"),
-        legend.justification="top",
-        legend.title=element_blank(),
-        legend.background=element_blank(),
-        legend.position=c(0.1,1.04),
-        legend.text=element_text(size=6, color="black"),
-        legend.key=element_blank(),
-        legend.key.width=unit(1.2,"line"),
-        legend.key.size = unit(1, 'lines')); hosp
+  theme; hosp
 
 jpeg(file="output/LV_hospitalizations.jpeg",
      width=7,height=4.5,
@@ -246,36 +219,16 @@ dev.off()
 
 # Figure of PA new cases over time ----------------------------------------
 new <- ggplot(data=df.pa.sum, aes(x=Date, y=New14)) +
-  geom_line(color="#e08f38") +
-  geom_col(aes(y=New), alpha=0.3, width=0.7, fill="#e08f38") +
+  geom_col(aes(y=New), alpha=0.7, width=0.7, fill="gray") +
+  geom_line(color="#e08f38", size=1, alpha=0.7) +
   labs(y="Daily new cases\n ",
-       caption="Data source: Johns Hopkins University Center for Systems Science and Engineering") +
-  #expand_limits(y=c(0,2500)) +
-  expand_limits(y=c(0,25000)) +
-  scale_y_continuous(expand=c(0,0)) +
-  scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b") +
+       caption="\nData source: Pennsylvania Department of Health") +
+  #expand_limits(y=c(0,30000)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,30000), breaks=seq(0,30000,5000)) +
+  scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b\n'%y") +
   ggtitle(label="How have the number of new COVID-19 cases changed over time in PA?",
-          subtitle=paste("Data as of 12:00 p.m. ET", Sys.Date())) +
-  theme(panel.background=element_blank(),
-        panel.grid=element_blank(),
-        plot.title=element_text(size= 10, hjust=0.5, color="#4e4d47", 
-                                margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
-        plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
-                                   margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
-        strip.background=element_rect(color="black", size=0.25),
-        axis.line=element_line(size=0.25),
-        axis.ticks=element_line(size=0.25),
-        axis.text=element_text(size=7, color="black"),
-        axis.title=element_text(size=8, color="black"),
-        axis.title.x=element_blank(),
-        plot.caption=element_text(size=6, color="black"),
-        legend.justification="top",
-        legend.title=element_blank(),
-        legend.position=c(0.90,1.04),
-        legend.text=element_text(size=6, color="black"),
-        legend.key=element_blank(),
-        legend.key.width=unit(1.2,"line"),
-        legend.key.size = unit(1, 'lines')); new
+          subtitle=paste("Data as of 6:00 a.m. ET", Sys.Date())) +
+  theme; new
 
 jpeg(file="output/PA_new_cases.jpeg",
      width=7,height=4.5,
