@@ -172,7 +172,7 @@ plot <- ggplot(data=df.lv,
                                  "Pennsylvania")) +
   labs(y="Daily new cases per 100,000 residents (14-day avg.)\n ",
        caption="\nData source: Pennsylvania Department of Health") +
-  scale_y_continuous(expand=c(0,0), limits=c(0,200), breaks=seq(0,200,20)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,240), breaks=seq(0,240,20)) +
   scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b\n'%y") +
   ggtitle(label="How has COVID-19 incidence changed over time in PA and the Lehigh Valley?",
           subtitle=paste("Data as of 6:00 a.m. ET", Sys.Date())) +
@@ -224,7 +224,7 @@ new <- ggplot(data=df.pa.sum, aes(x=Date, y=New14)) +
   labs(y="Daily new cases\n ",
        caption="\nData source: Pennsylvania Department of Health") +
   #expand_limits(y=c(0,30000)) +
-  scale_y_continuous(expand=c(0,0), limits=c(0,30000), breaks=seq(0,30000,5000)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,35000), breaks=seq(0,35000,5000)) +
   scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b\n'%y") +
   ggtitle(label="How have the number of new COVID-19 cases changed over time in PA?",
           subtitle=paste("Data as of 6:00 a.m. ET", Sys.Date())) +
@@ -236,6 +236,7 @@ jpeg(file="output/PA_new_cases.jpeg",
      res=1200)
 new
 dev.off()
+
 
 # Update files on Google Drive --------------------------------------------
 library(googledrive)
