@@ -147,7 +147,7 @@ plot <- ggplot(data=df.lv,
            fill=County,
            size=County,
            linetype=County)) +
-  geom_line(position="identity", size=0.7, alpha=0.7) +
+  geom_line(position="identity", size=0.35, alpha=0.7) +
   geom_area(position="identity", alpha=0.1, show.legend=FALSE) +
   scale_color_manual(values=c(Lehigh="Blue",
                               Northampton="Orange",
@@ -198,7 +198,7 @@ write_csv(beds.total,"data/hospitalizations.csv")
 
 hosp <- beds.total %>%
   ggplot(aes(as.Date(date),total)) +
-  geom_line(position="identity", size=0.7, alpha=0.7) +
+  geom_line(position="identity", size=0.35, alpha=0.7) +
   geom_area(position="identity", alpha=0.1, show.legend=FALSE) +
   labs(y="Number of COVID-19 patients hospitalized (14-day avg.)\n ",
        caption="\nData source: Pennsylvania Department of Health") +
@@ -220,7 +220,7 @@ dev.off()
 # Figure of PA new cases over time ----------------------------------------
 new <- ggplot(data=df.pa.sum, aes(x=Date, y=New14)) +
   geom_col(aes(y=New), alpha=0.7, width=0.7, fill="gray") +
-  geom_line(color="#e08f38", size=1, alpha=0.7) +
+  geom_line(color="#e08f38", size=0.5, alpha=0.7) +
   labs(y="Daily new cases\n ",
        caption="\nData source: Pennsylvania Department of Health") +
   #expand_limits(y=c(0,30000)) +
