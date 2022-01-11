@@ -172,7 +172,7 @@ plot <- ggplot(data=df.lv,
                                  "Pennsylvania")) +
   labs(y="Daily new cases per 100,000 residents (14-day avg.)\n ",
        caption="\nData source: Pennsylvania Department of Health") +
-  scale_y_continuous(expand=c(0,0), limits=c(0,240), breaks=seq(0,240,20)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,260), breaks=seq(0,260,20)) +
   scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b\n'%y") +
   ggtitle(label="How has COVID-19 incidence changed over time in PA and the Lehigh Valley?",
           subtitle=paste("Data as of 6:00 a.m. ET", Sys.Date())) +
