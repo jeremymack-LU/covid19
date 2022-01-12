@@ -172,7 +172,7 @@ plot <- ggplot(data=df.lv,
                                  "Pennsylvania")) +
   labs(y="Daily new cases per 100,000 residents (14-day avg.)\n ",
        caption="\nData source: Pennsylvania Department of Health") +
-  scale_y_continuous(expand=c(0,0), limits=c(0,260), breaks=seq(0,260,20)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,280), breaks=seq(0,280,20)) +
   scale_x_date(expand=c(0.01,0), date_breaks = "1 month", date_labels = "%b\n'%y") +
   ggtitle(label="How has COVID-19 incidence changed over time in PA and the Lehigh Valley?",
           subtitle=paste("Data as of 6:00 a.m. ET", Sys.Date())) +
@@ -219,8 +219,9 @@ dev.off()
 
 # Figure of PA new cases over time ----------------------------------------
 new <- ggplot(data=df.pa.sum, aes(x=Date, y=New14)) +
-  geom_col(aes(y=New), alpha=0.7, width=0.7, fill="gray") +
-  geom_line(color="#e08f38", size=0.5, alpha=0.7) +
+  geom_area(position="identity", alpha=0.1, show.legend=FALSE,fill="#e08f38") +
+  geom_point(aes(y=New), size=1, alpha=0.5, stroke=0) +
+  geom_line(color="#e08f38", size=0.5, alpha=0.8) +
   labs(y="Daily new cases\n ",
        caption="\nData source: Pennsylvania Department of Health") +
   #expand_limits(y=c(0,30000)) +
