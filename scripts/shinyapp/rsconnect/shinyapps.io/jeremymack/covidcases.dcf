@@ -5,9 +5,9 @@ account: jeremymack
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5398228
-bundleId: 5460110
+bundleId: 5472016
 url: https://jeremymack.shinyapps.io/covidcases/
-when: 1641986449.35424
-lastSyncTime: 1641986449.35425
+when: 1642265048.57987
+lastSyncTime: 1642265048.57988
 asMultiple: FALSE
 asStatic: FALSE
