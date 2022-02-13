@@ -238,7 +238,6 @@ jpeg(file="output/PA_new_cases.jpeg",
 new
 dev.off()
 
-
 # Update files on Google Drive --------------------------------------------
 library(googledrive)
 
