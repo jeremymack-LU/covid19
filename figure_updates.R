@@ -421,6 +421,52 @@ usa.vac + pa.vac + plot_annotation(
                                    margin=margin(b = 0, t = 0.4, l = 2, unit = "cm")))
 dev.off()
 
+
+# CDC masking guidlines ---------------------------------------------------
+url <- "https://www.cdc.gov/coronavirus/2019-ncov/json/covid-community-level-structure-2.csv"
+
+cdc <- read_csv(url, skip=1)
+
+cdc <- cdc %>%
+  select(-c(10:12)) %>%
+  rename(fips=2,
+         hosp_beds=3,
+         hosp_admin=4,
+         cases_per_100k=5,
+         comm_level=6,
+         cases=7,
+         positivity=8,
+         comm_trans_level=9)
+
+cty.sf <- counties_sf("longlat")
+st_crs(cty.sf) <- st_crs(cty.sf)
+
+pa.sf <- cty.sf %>%
+  filter(state=='Pennsylvania') %>%
+  select(fips) %>%
+  mutate(fips=as.numeric(as.character(fips))) %>%
+  left_join(cdc,by='fips')
+
+cols <- c("Low"="#71a5ad",
+          "Medium"="#d1bb60",
+          "High"="#b35939",
+          "No Data"="lightgray")
+
+pa1 <- ggplot() +
+  geom_sf(data=pa.sf, aes(fill=comm_level),
+          size=0.25, color="white") +
+  scale_fill_manual(values=cols) +
+  theme_void() +
+  theme(
+    legend.position="none",
+    text=element_text(color="#22211d"),
+    plot.background=element_rect(fill="white", color=NA), 
+    panel.background=element_rect(fill="white", color=NA), 
+    plot.title=element_text(size= 12, hjust=0.5, color="#4e4d47", 
+                            margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+    plot.subtitle=element_text(size=8, hjust=0.5, color="#4e4d47", face="italic",
+                               margin=margin(b = -0.1, t = 0.4, l = 2, unit = "cm")))
+
 # Update files on Google Drive --------------------------------------------
 library(googledrive)
 
